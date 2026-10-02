@@ -40,15 +40,20 @@ Book_V1.pdf** as a visual reference, not as a claim of institutional authorship:
 The kiwi is the actual user-supplied
 `new_images/IL_2026.10.02_Themes_Kiwi.svg` from `EP_Illustrations_Kit`.
 `assets/kiwi-original.svg` is a byte-for-byte copy. `assets/kiwi-hero.webp`
-is a 1400px-wide web rendering (about 66 KB); `assets/kiwi-mark.webp` and
+is a tightly framed 1400px-wide transparent web rendering (about 33 KB),
+with the background, texture blob and ground shadow omitted. The original
+fruit shapes and colours are unchanged. The illustration sits on white,
+enlarged so its lower edge extends behind the foreground blue Explore band.
+The feature heading and caption have no coloured framing bands.
+`assets/kiwi-mark.webp` and
 `favicon.png` crop the original `kiwi-half` group without redrawing or
 recolouring it. The originals in the supplied kit are never modified.
-The full illustration has descriptive English alt text; the repeated brand
+The fruit illustration has descriptive English alt text; the repeated brand
 accent is decorative. The kiwi appears in the identity, hero and favicon,
 with "fresh start" copy connecting it to the portal's purpose.
 
-**Intentional exceptions:** the kiwi's original brown fruit colours and
-background are preserved as the requested playful departure. The book
+**Intentional exceptions:** the kiwi's original brown fruit colours
+are preserved as the requested playful departure. The book
 restricts naturalistic skin/hair colours to people in institutional
 illustrations (pp.31/50); this supplied fruit artwork is therefore not claimed
 to comply fully with that palette rule. No European Parliament logo, seal or
