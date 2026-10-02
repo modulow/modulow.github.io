@@ -9,7 +9,13 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let frame = 0;
 let heroBottom = 0;
 let headerHeight = 0;
-let entranceStart = !reducedMotion.matches && window.scrollY < 1 ? performance.now() : null;
+let entranceStart = !reducedMotion.matches && window.scrollY < 1 && document.querySelector(".loader").hidden ? performance.now() : null;
+window.addEventListener("portal-ready", () => {
+  if (!reducedMotion.matches && window.scrollY < 1) {
+    entranceStart = performance.now();
+    if (!frame) frame = requestAnimationFrame(paint);
+  }
+}, { once: true });
 
 function updateHeader() {
   const compact = window.scrollY > 48;

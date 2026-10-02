@@ -13,6 +13,11 @@
 
 * { box-sizing: border-box; }
 body { margin: 0; }
+.loader { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; background: var(--white); pointer-events: none; animation: loader-dismiss 2s step-end forwards; }
+.loader[hidden] { display: none; }
+.loader img { width: 160px; height: 160px; object-fit: contain; animation: kiwi-pulse 700ms ease-in-out infinite; }
+@keyframes kiwi-pulse { 0%, 100% { transform: scale(.9); } 50% { transform: scale(1.08); } }
+@keyframes loader-dismiss { to { visibility: hidden; } }
 a { color: inherit; scroll-margin-top: 96px; }
 img { display: block; max-width: 100%; height: auto; }
 svg { display: block; width: 30px; height: 30px; }
@@ -151,6 +156,7 @@ h3 { margin: 0; font-size: 28px; line-height: 1.2; letter-spacing: -.6px; font-w
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .loader img { animation: none; }
   .header::before { transition: none; }
   .card, .card.card-reveal { transition: none; }
   .card.card-pending { opacity: 1; transform: none; }
