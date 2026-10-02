@@ -91,7 +91,7 @@ h3 { margin: 0; font-size: 28px; line-height: 1.2; letter-spacing: -.6px; font-w
 .footer { position: relative; z-index: 3; padding-block: 42px 24px; background: var(--blue); color: var(--white); }
 .footer-inner { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); align-items: center; gap: 24px; }
 .footer .eyebrow { color: var(--yellow); }
-.footer-top { min-width: 0; }
+.footer-top { min-width: 0; transform: translateY(-16px); }
 .footer-title { margin: 0; font-size: clamp(24px, 3vw, 36px); line-height: 1.2; font-weight: 700; letter-spacing: -.7px; }
 .footer-title > span { color: var(--yellow); }
 .footer-community { display: block; position: relative; top: -85px; width: min(600px, 100%); margin: 0 0 -85px auto; }
