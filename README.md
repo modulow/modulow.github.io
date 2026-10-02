@@ -88,6 +88,17 @@ The fruit, blob and repeated brand accent are decorative with empty alt text.
 The home link retains its accessible name. The kiwi appears in the identity, hero and favicon,
 with "fresh start" copy connecting it to the portal's purpose.
 
+The footer community scene uses six native character poses (`n3`, `n38`,
+`n51`, `n39`, `n64`, `n70`) from the supplied toolkit's pose bank, together
+with `IL_2023.12.19_Buildings_EP Campus Brussels.ai`. No people or architecture
+are invented or redrawn. Clothing and building accents use the existing
+primary/sky-blue palette with neutral colours and native skin/hair tones.
+The original kiwi rendering is enlarged at the centre without recolouring.
+`assets/footer-community.webp` (1920 x 1050) and its square mobile composition
+keep all six characters and the Parliament building visible, without cropping.
+The scene is decorative, lazy-loaded and separate from the hero motion layers;
+the footer slogan remains accessible text rather than part of the image.
+
 **Intentional exceptions:** the kiwi's original brown fruit colours
 are preserved as the requested playful departure. The book
 restricts naturalistic skin/hair colours to people in institutional
