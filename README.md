@@ -28,7 +28,8 @@ scrolled loads and reduced-motion users skip this entrance.
 The apps anchor leaves room for the sticky header and keyboard focus.
 A one-second introductory loader pulses the kiwi mark once, then reveals the portal.
 It is absent without JavaScript, dismisses on keyboard focus and disables the
-pulse for reduced-motion users. The hero entrance starts after the loader.
+pulse for reduced-motion users. The hero entrance waits one second after
+the loader disappears before rising into the page.
 Cards rise into view once with a brisk 380ms scroll entrance, progressively
 enhanced with IntersectionObserver. Keyboard focus reveals a card immediately;
 reduced-motion users and browsers without JavaScript see all cards normally.

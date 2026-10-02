@@ -12,7 +12,7 @@ let headerHeight = 0;
 let entranceStart = !reducedMotion.matches && window.scrollY < 1 && document.querySelector(".loader").hidden ? performance.now() : null;
 window.addEventListener("portal-ready", () => {
   if (!reducedMotion.matches && window.scrollY < 1) {
-    entranceStart = performance.now();
+    entranceStart = performance.now() + 1000;
     if (!frame) frame = requestAnimationFrame(paint);
   }
 }, { once: true });
@@ -32,7 +32,7 @@ function paint() {
   if (reducedMotion.matches) return;
   const scroll = window.scrollY;
   if (scroll > 48) entranceStart = null;
-  const entranceProgress = entranceStart === null ? 1 : Math.min(1, (performance.now() - entranceStart) / 450);
+  const entranceProgress = entranceStart === null ? 1 : Math.max(0, Math.min(1, (performance.now() - entranceStart) / 450));
   const bottom = heroBottom - scroll;
   for (const layer of layers) {
     const entranceOffset = layer === layers[0] ? layer.height * .85 * (1 - entranceProgress) ** 3 : 0;
