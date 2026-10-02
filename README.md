@@ -67,11 +67,12 @@ The decorative composition has no feature heading or caption.
 The header title reads `ep.europa.kiwi_`, with a decorative Yellow underscore
 and the unchanged domain as its accessible home-link name.
 `An L&D IT Sector initiative` sits directly
-below it on the same left edge. The hero headline uses a uniform font size
+below it, justified to the title's left and right edges (excluding the underscore).
+The hero headline uses a uniform font size
 across two deliberate lines, with matching two-line supporting copy on
 desktop/tablet (body copy wraps naturally on narrow phones to stay readable).
 The foreground text has a white backing where it crosses the illustration.
-The apps section and its navigation link are labelled `Fresh Apps`,
+The apps section and its navigation link are labelled `Apps`,
 and a decorative yellow dialogue stroke follows the kiwi above the Explore
 band, using the book's horizontal graphic-device principle (p.58).
 `assets/kiwi-mark.webp` and
