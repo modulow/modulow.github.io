@@ -11,7 +11,9 @@ const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let frame = 0;
 let heroBottom = 0;
 let headerHeight = 0;
-let entranceStart = !reducedMotion.matches && window.scrollY < 1 && document.querySelector(".loader").hidden ? performance.now() : null;
+let entranceStart = !reducedMotion.matches && window.scrollY < 1
+  ? (document.querySelector(".loader").hidden ? performance.now() + 1000 : Infinity)
+  : null;
 window.addEventListener("portal-ready", () => {
   if (!reducedMotion.matches && window.scrollY < 1) {
     entranceStart = performance.now() + 1000;
@@ -46,9 +48,9 @@ function paint() {
     layer.element.style.opacity = layer.entranceDelay ? `${progress}` : "1";
     layer.element.style.setProperty("--clip-top", `${Math.max(0, headerHeight - top)}px`);
     layer.element.style.setProperty("--clip-bottom", `${Math.max(0, top + layer.height - bottom)}px`);
-    layer.element.style.visibility = bottom <= headerHeight ? "hidden" : "visible";
+    layer.element.style.visibility = bottom <= headerHeight || progress === 0 ? "hidden" : "visible";
   }
-  if (entering) frame = requestAnimationFrame(paint);
+  if (entering && entranceStart !== Infinity) frame = requestAnimationFrame(paint);
 }
 
 function measure() {

@@ -32,6 +32,8 @@ to nothing over 350ms. Only then does its white background fade out over
 It is absent without JavaScript, dismisses on keyboard focus and disables the
 pulse, shrink and fade for reduced-motion users. The hero entrance waits one second after
 the loader disappears before rising into the page.
+Animated hero layers stay hidden throughout the loader's fade and the
+following pause, preventing a flash of their final position before entrance.
 The large half enters in 450ms; the upper and lower small kiwis each have
 their own entrance speed (800ms and 1200ms). The blob starts only after
 all three fruits have settled, rising and fading in over 650ms.
