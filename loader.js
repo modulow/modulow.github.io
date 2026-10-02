@@ -5,5 +5,5 @@ function dismissLoader() {
   loader.hidden = true;
   window.dispatchEvent(new Event("portal-ready"));
 }
-setTimeout(dismissLoader, 2000);
+setTimeout(dismissLoader, 1000);
 document.addEventListener("focusin", dismissLoader, { once: true });
