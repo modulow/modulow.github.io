@@ -4,7 +4,7 @@ An independent English-language portal at **https://ep.europa.kiwi/**.
 
 | Destination | Link |
 | --- | --- |
-| Brochure | https://modulow.github.io/ep-l-d-brochure/ |
+| L&D brochure | https://modulow.github.io/ep-l-d-brochure/ |
 | Timetable | https://ld-europa.eu/ |
 | IT support / ticketing | https://modulow.github.io/sharepoint-ticketing/ |
 
@@ -62,7 +62,9 @@ only the full-width hero clips that bleed, not its inner grid container.
 Original fruit shapes and colours are unchanged. The illustration sits on white,
 enlarged so its lower edge extends behind the foreground blue Explore band.
 The decorative composition has no feature heading or caption.
-The header title reads `ep.europa.kiwi`, with `Fresh L&D IT Sector Initiative.` directly
+The header title reads `ep.europa.kiwi_`, with a decorative Yellow underscore
+and the unchanged domain as its accessible home-link name.
+`Fresh L&D IT Sector Initiative.` sits directly
 below it on the same left edge. The hero headline uses a uniform font size
 across two deliberate lines, with matching two-line supporting copy on
 desktop/tablet (body copy wraps naturally on narrow phones to stay readable).
