@@ -26,9 +26,11 @@ On a fresh load at the top, the fruit rises from behind the blue band in
 450ms. Its entrance offset shares the scroll transform and hero clipping;
 scrolled loads and reduced-motion users skip this entrance.
 The apps anchor leaves room for the sticky header and keyboard focus.
-A one-second introductory loader pulses the kiwi mark once, then reveals the portal.
+A one-second introductory loader pulses the kiwi mark once, then shrinks it
+to nothing over 350ms. Only then does its white background fade out over
+450ms to reveal the portal; the hero's one-second pause starts after this reveal.
 It is absent without JavaScript, dismisses on keyboard focus and disables the
-pulse for reduced-motion users. The hero entrance waits one second after
+pulse, shrink and fade for reduced-motion users. The hero entrance waits one second after
 the loader disappears before rising into the page.
 The large half enters in 450ms; the upper and lower small kiwis each have
 their own entrance speed (800ms and 1200ms). The blob starts only after
