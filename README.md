@@ -62,7 +62,7 @@ only the full-width hero clips that bleed, not its inner grid container.
 Original fruit shapes and colours are unchanged. The illustration sits on white,
 enlarged so its lower edge extends behind the foreground blue Explore band.
 The decorative composition has no feature heading or caption.
-The header title reads `ep.europa.kiwi`, with `A fresh perspective` directly
+The header title reads `ep.europa.kiwi`, with `L&D` directly
 below it on the same left edge. The hero headline uses a uniform font size
 across two deliberate lines, with matching two-line supporting copy on
 desktop/tablet (body copy wraps naturally on narrow phones to stay readable).
