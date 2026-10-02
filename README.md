@@ -4,7 +4,7 @@ An independent English-language portal at **https://ep.europa.kiwi/**.
 
 | Destination | Link |
 | --- | --- |
-| L&D brochure | https://modulow.github.io/ep-l-d-brochure/ |
+| EP Learning Catalogue | https://modulow.github.io/ep-l-d-brochure/ |
 | Timetable | https://ep.europa.kiwi/jma-timetable/ |
 | IT support / ticketing | https://modulow.github.io/sharepoint-ticketing/ |
 
