@@ -79,10 +79,12 @@ h2 { margin: 0; font-size: clamp(24px, 2.8vw, 36px); line-height: 1.15; letter-s
 .card-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
 .icon { display: grid; place-items: center; width: 56px; height: 56px; background: var(--accent); color: var(--icon-ink); }
 .card-number { color: var(--blue); font-size: 36px; line-height: 1; font-weight: 700; font-variant-numeric: tabular-nums; }
+.card-brochure .card-number { color: var(--yellow); }
+.card-schedule .card-number { color: var(--sky); }
 .card-category { margin: 0 0 10px; color: var(--blue); text-transform: uppercase; letter-spacing: 1.3px; font-size: 11px; font-weight: 700; }
 h3 { margin: 0; font-size: 28px; line-height: 1.2; letter-spacing: -.6px; font-weight: 700; }
 .card-description { margin: 18px 0 28px; font-size: 15px; line-height: 1.7; }
-.card-action { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--grey); font-size: 14px; font-weight: 700; }
+.card-action { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--grey); color: var(--blue); font-size: 14px; font-weight: 700; }
 .card:hover .card-action { text-decoration: underline; text-underline-offset: 4px; }
 .arrow { color: var(--blue); font-size: 24px; font-weight: 400; }
 .access-note { margin: 24px 0 0; max-width: 720px; font-size: 12px; line-height: 1.7; }
