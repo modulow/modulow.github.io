@@ -18,7 +18,7 @@ motion and forced-colour support. All links open in the same tab.
 `hero.js` progressively enhances the decorative fruit and blob into separate
 fixed scroll layers. A passive scroll listener schedules transform-only
 movement with animation frames; geometry is measured only at setup/resize.
-Clipping limits both layers to the hero below the compact sticky header.
+Clipping limits all layers to the hero below the compact sticky header.
 The header becomes smaller after 48px of scrolling, reserving its original
 layout space to avoid content jumps. Its subtitle meets the kiwi icon's base.
 Reduced-motion users (and browsers without JavaScript) get static artwork.
@@ -30,8 +30,10 @@ A one-second introductory loader pulses the kiwi mark once, then reveals the por
 It is absent without JavaScript, dismisses on keyboard focus and disables the
 pulse for reduced-motion users. The hero entrance waits one second after
 the loader disappears before rising into the page.
-The two small hero kiwis enter in 900ms, twice as slowly as the large half
-(450ms). Separate aligned images preserve the original fruit composition
+The large half enters in 450ms; the upper and lower small kiwis each have
+their own entrance speed (800ms and 1200ms). The blob starts only after
+all three fruits have settled, rising and fading in over 650ms.
+Separate aligned images preserve the original fruit composition
 and share the existing scroll speed, hero clipping and reduced-motion fallback.
 Cards rise into view once with a brisk 380ms scroll entrance, progressively
 enhanced with IntersectionObserver. Keyboard focus reveals a card immediately;

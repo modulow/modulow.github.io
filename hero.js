@@ -3,8 +3,9 @@ const header = document.querySelector(".header");
 const headerInner = document.querySelector(".header-inner");
 const layers = [
   { element: document.querySelector(".kiwi-large"), speed: 0.85, entranceDuration: 450 },
-  { element: document.querySelector(".kiwi-small"), speed: 0.85, entranceDuration: 900 },
-  { element: document.querySelector(".kiwi-blob"), speed: 0.65 }
+  { element: document.querySelector(".kiwi-small-upper"), speed: 0.85, entranceDuration: 800 },
+  { element: document.querySelector(".kiwi-small-lower"), speed: 0.85, entranceDuration: 1200 },
+  { element: document.querySelector(".kiwi-blob"), speed: 0.65, entranceDuration: 650, entranceDelay: 1200 }
 ];
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 let frame = 0;
@@ -36,12 +37,13 @@ function paint() {
   let entering = false;
   const bottom = heroBottom - scroll;
   for (const layer of layers) {
-    const progress = entranceStart === null || !layer.entranceDuration ? 1 : Math.max(0, Math.min(1, (performance.now() - entranceStart) / layer.entranceDuration));
+    const progress = entranceStart === null || !layer.entranceDuration ? 1 : Math.max(0, Math.min(1, (performance.now() - entranceStart - (layer.entranceDelay || 0)) / layer.entranceDuration));
     entering ||= progress < 1;
     const entranceOffset = layer.height * .85 * (1 - progress) ** 3;
     const displacement = -scroll * layer.speed + entranceOffset;
     const top = layer.top + displacement;
     layer.element.style.transform = `translate3d(0, ${displacement}px, 0)`;
+    layer.element.style.opacity = layer.entranceDelay ? `${progress}` : "1";
     layer.element.style.setProperty("--clip-top", `${Math.max(0, headerHeight - top)}px`);
     layer.element.style.setProperty("--clip-bottom", `${Math.max(0, top + layer.height - bottom)}px`);
     layer.element.style.visibility = bottom <= headerHeight ? "hidden" : "visible";
