@@ -1,4 +1,4 @@
-# Europa.kiwi
+# ep.europa.kiwi
 
 An independent English-language portal at **https://ep.europa.kiwi/**.
 
@@ -54,6 +54,10 @@ behind the enlarged fruit on white. The original
 fruit shapes and colours are unchanged. The illustration sits on white,
 enlarged so its lower edge extends behind the foreground blue Explore band.
 The decorative composition has no feature heading or caption.
+The header title reads `ep.europa.kiwi`, with `A fresh perspective` directly
+below it on the same left edge. The hero's `fresh start` phrase is enlarged,
+and a decorative yellow dialogue stroke follows the kiwi above the Explore
+band, using the book's horizontal graphic-device principle (p.58).
 `assets/kiwi-mark.webp` and
 `favicon.png` crop the original `kiwi-half` group without redrawing or
 recolouring it. The originals in the supplied kit are never modified.
