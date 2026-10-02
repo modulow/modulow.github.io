@@ -22,7 +22,13 @@ Clipping limits both layers to the hero below the compact sticky header.
 The header becomes smaller after 48px of scrolling, reserving its original
 layout space to avoid content jumps. Its subtitle meets the kiwi icon's base.
 Reduced-motion users (and browsers without JavaScript) get static artwork.
+On a fresh load at the top, the fruit rises from behind the blue band in
+450ms. Its entrance offset shares the scroll transform and hero clipping;
+scrolled loads and reduced-motion users skip this entrance.
 The apps anchor leaves room for the sticky header and keyboard focus.
+Cards rise into view once with a brisk 380ms scroll entrance, progressively
+enhanced with IntersectionObserver. Keyboard focus reveals a card immediately;
+reduced-motion users and browsers without JavaScript see all cards normally.
 
 GitHub Pages serves assets with a ten-minute browser cache. The stylesheet
 and script/hero image references in `index.html` include a `?v=` content revision so
