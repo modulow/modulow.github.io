@@ -72,7 +72,7 @@ enlarged so its lower edge extends behind the foreground blue Explore band.
 The decorative composition has no feature heading or caption.
 The header title reads `ep.europa.kiwi_`, with a decorative Yellow underscore
 and the unchanged domain as its accessible home-link name.
-`An L&D IT Sector initiative` sits directly
+`An L&D applications portal` sits directly
 below it, justified to the title's left and right edges (excluding the underscore).
 The hero headline uses a uniform font size
 across two deliberate lines, with matching two-line supporting copy on
