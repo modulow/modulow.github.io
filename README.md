@@ -88,14 +88,19 @@ The fruit, blob and repeated brand accent are decorative with empty alt text.
 The home link retains its accessible name. The kiwi appears in the identity, hero and favicon,
 with "fresh start" copy connecting it to the portal's purpose.
 
-The footer community scene uses six native character poses (`n3`, `n38`,
-`n51`, `n39`, `n64`, `n70`) from the supplied toolkit's pose bank, together
-with `IL_2023.12.19_Buildings_EP Campus Brussels.ai`. No people or architecture
+The compact footer community scene sits beside the slogan and uses ten complete
+native character poses (`n3`, `n38`, `n54`, `n57`, `n58`, `n39`, `n64`,
+`n73`, `n74`, `n70`) from the supplied toolkit's pose bank, together
+with `Enhanced perspective scenes_EP Campus Brussels from side of Place Du Luxembourg.ai`.
+No people or architecture
 are invented or redrawn. Clothing and building accents use the existing
 primary/sky-blue palette with neutral colours and native skin/hair tones.
-The original kiwi rendering is enlarged at the centre without recolouring.
-`assets/footer-community.webp` (1920 x 1050) and its square mobile composition
-keep all six characters and the Parliament building visible, without cropping.
+One native kiwi half sits at the centre in its original colours, without the
+two whole fruits. `assets/footer-community.webp` (1500 x 900) and its smaller
+mobile rendition keep all ten characters and the detailed Parliament building
+visible, without cropping. Incomplete native poses are deliberately excluded.
+The transparent scene lets the roof rise above the footer's blue background,
+into the preceding white space, without moving the footer copy.
 The scene is decorative, lazy-loaded and separate from the hero motion layers;
 the footer slogan remains accessible text rather than part of the image.
 

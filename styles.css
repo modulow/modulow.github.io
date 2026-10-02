@@ -88,13 +88,22 @@ h3 { margin: 0; font-size: 28px; line-height: 1.2; letter-spacing: -.6px; font-w
 .card:hover .card-action { text-decoration: underline; text-underline-offset: 4px; }
 .arrow { color: var(--blue); font-size: 24px; font-weight: 400; }
 .access-note { margin: 24px 0 0; max-width: 720px; font-size: 12px; line-height: 1.7; }
-.footer { padding-block: 42px 24px; background: var(--blue); color: var(--white); }
+.footer { position: relative; z-index: 3; padding-block: 42px 24px; background: var(--blue); color: var(--white); }
+.footer-inner { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); align-items: center; gap: 24px; }
 .footer .eyebrow { color: var(--yellow); }
-.footer-top { display: flex; align-items: end; justify-content: space-between; gap: 24px; padding-bottom: 32px; }
+.footer-top { min-width: 0; }
 .footer-title { margin: 0; font-size: clamp(24px, 3vw, 36px); line-height: 1.2; font-weight: 700; letter-spacing: -.7px; }
 .footer-title > span { color: var(--yellow); }
-.footer-community { display: block; width: min(1120px, 100%); margin-inline: auto; }
+.footer-community { display: block; position: relative; top: -85px; width: min(600px, 100%); margin: 0 0 -85px auto; }
 .footer-community img { width: 100%; height: auto; }
+
+@media (max-width: 600px) {
+  .footer { padding-top: 24px; }
+  .footer-inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 8px; }
+  .footer-title { font-size: clamp(16px, 4vw, 24px); letter-spacing: -.3px; }
+  .footer .eyebrow { font-size: 9px; letter-spacing: .4px; }
+  .footer-community { top: -55px; margin-bottom: -30px; }
+}
 
 @media (max-width: 1100px) {
   .container { width: calc(100% - 64px); }
