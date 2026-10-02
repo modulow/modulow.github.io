@@ -10,14 +10,20 @@ An independent English-language portal at **https://ep.europa.kiwi/**.
 
 ## Working on the portal
 
-Open `index.html` in a browser. There is no build step, JavaScript, tracking,
+Open `index.html` in a browser. There is no build step, tracking,
 external font request or runtime dependency. Update the three card `href`
 attributes in `index.html` and this table when changing destinations.
 `styles.css` defines the responsive layout, keyboard-visible focus, reduced
 motion and forced-colour support. All links open in the same tab.
+`hero.js` progressively enhances the decorative fruit and blob into separate
+fixed scroll layers. A passive scroll listener schedules transform-only
+movement with animation frames; geometry is measured only at setup/resize.
+Clipping limits both layers to the hero below the compact sticky header.
+Reduced-motion users (and browsers without JavaScript) get static artwork.
+The apps anchor leaves room for the sticky header and keyboard focus.
 
 GitHub Pages serves assets with a ten-minute browser cache. The stylesheet
-and hero image references in `index.html` include a `?v=` content revision so
+and script/hero image references in `index.html` include a `?v=` content revision so
 returning browsers fetch the changed assets with a fresh page. When editing
 either file, update its revision (for example, the first 12 characters of its
 SHA-256 hash). A page refresh may still be needed for cached HTML; adding a
