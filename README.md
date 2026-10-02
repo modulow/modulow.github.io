@@ -1,7 +1,7 @@
 # Portail Europa
 
-Portail public en français, publié sur **https://modulow.github.io/** et destiné
-à **https://ep.europa.kiwi/** une fois le DNS configuré, avec trois accès :
+Portail public en français, configuré pour **https://ep.europa.kiwi/**,
+avec trois accès :
 
 | Accès | Destination |
 | --- | --- |
@@ -27,9 +27,10 @@ GitHub Pages doit publier la branche `main`, dossier racine `/`
 (Settings → Pages → Deploy from a branch). Chaque envoi sur `main` publie le
 site. `.nojekyll` désactive le traitement Jekyll.
 
-**État initial :** le domaine personnalisé est volontairement désactivé et
-aucun fichier `CNAME` n’est présent, pour préserver l’accès aux sites de
-projets tant que le DNS OVH n’est pas prêt.
+Le domaine personnalisé configuré dans Pages et le fichier `CNAME` à la
+racine du dépôt contiennent `ep.europa.kiwi`. Le domaine a été activé après
+vérification du CNAME DNS. L’accès HTTPS nécessite également la délivrance
+du certificat par GitHub.
 
 Dans la zone DNS OVH de `europa.kiwi`, créer :
 
@@ -41,11 +42,11 @@ La cible est un nom d’hôte, sans protocole ni chemin. Ne pas laisser
 d’enregistrements A ou AAAA sur `ep` en parallèle du CNAME. Ne pas modifier
 les autres sous-domaines ni le domaine `ld-europa.eu`.
 
-Après propagation du DNS, attendre la délivrance du certificat par GitHub,
-puis activer **Enforce HTTPS** dans Pages lorsque cette option est disponible.
-Avant cette étape, vérifier que le CNAME DNS est résolu, puis configurer
-`ep.europa.kiwi` comme domaine personnalisé dans Pages et ajouter à la
-racine du dépôt un fichier `CNAME` contenant uniquement `ep.europa.kiwi`.
+Lors d’une nouvelle configuration, vérifier d’abord que le CNAME DNS est
+résolu, puis configurer `ep.europa.kiwi` comme domaine personnalisé dans
+Pages et conserver le fichier `CNAME` contenant uniquement `ep.europa.kiwi`.
+Attendre la délivrance du certificat par GitHub, puis activer
+**Enforce HTTPS** dans Pages lorsque cette option est disponible.
 La présence de ce fichier dans le dépôt ne configure pas le DNS OVH.
 
 **Attention aux sites de projets :** les projets GitHub Pages de `modulow`
