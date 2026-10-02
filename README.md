@@ -1,59 +1,83 @@
-# Portail Europa
+# Europa.kiwi
 
-Portail public en français, configuré pour **https://ep.europa.kiwi/**,
-avec trois accès :
+An independent English-language portal at **https://ep.europa.kiwi/**.
 
-| Accès | Destination |
+| Destination | Link |
 | --- | --- |
 | Brochure | https://modulow.github.io/ep-l-d-brochure/ |
-| Emploi du temps | https://ld-europa.eu/ |
-| Support IT / ticketing | https://modulow.github.io/sharepoint-ticketing/ |
+| Timetable | https://ld-europa.eu/ |
+| IT support / ticketing | https://modulow.github.io/sharepoint-ticketing/ |
 
-## Fonctionnement
+## Working on the portal
 
-Site statique sans dépendances, JavaScript, suivi ni police externe. Ouvrir
-`index.html` dans un navigateur pour le consulter localement. `styles.css`
-contient les styles et les adaptations mobiles ; `favicon.svg` est l’icône du
-site. Les cartes sont des liens accessibles au clavier, avec un focus visible,
-et s’ouvrent dans le même onglet. Les effets respectent la préférence de
-réduction des animations.
+Open `index.html` in a browser. There is no build step, JavaScript, tracking,
+external font request or runtime dependency. Update the three card `href`
+attributes in `index.html` and this table when changing destinations.
+`styles.css` defines the responsive layout, keyboard-visible focus, reduced
+motion and forced-colour support. All links open in the same tab.
 
-Pour modifier les destinations, éditer les attributs `href` des trois cartes
-dans `index.html` et mettre à jour le tableau ci-dessus.
+## Visual identity and artwork
 
-## Publication GitHub Pages
+The design follows the supplied **Annex VIII - European Parliament Brand
+Book_V1.pdf** as a visual reference, not as a claim of institutional authorship:
 
-GitHub Pages doit publier la branche `main`, dossier racine `/`
-(Settings → Pages → Deploy from a branch). Chaque envoi sur `main` publie le
-site. `.nojekyll` désactive le traitement Jekyll.
+- Primary palette (p.32): Reflex Blue `#0C4DA2`, Yellow `#FDE021`, white
+  `#FFFFFF`, black `#1E1E1E` and Cool Grey `#C8C8C8`. Card accents use secondary
+  sky blue `#65E2FF`; the supplied kiwi contributes greens `#00B464` and
+  `#28DC78`, keeping the surrounding design to three secondary colours.
+- Hierarchy (pp.52–54): strong headings, lighter body copy and deliberate
+  differences in size, weight and placement. The font stack is
+  `"Myriad Pro", Arial, sans-serif`. **No licensed webfont was supplied**, so
+  visitors without Myriad Pro see Arial. Typography is therefore not
+  guaranteed to match the institutional typeface.
+- Graphic language (p.58): purposeful horizontal dialogue strokes.
+  Supporting icons use simple geometric shapes and rounded line ends,
+  without shadows or 3D effects (pp.61–62).
+- The rendered [IT helpdesk](https://modulow.github.io/sharepoint-ticketing/)
+  inspired the uppercase hierarchy, rectangular cards, blue panels and
+  yellow accents. Its application navigation and functionality are not copied.
 
-Le domaine personnalisé configuré dans Pages et le fichier `CNAME` à la
-racine du dépôt contiennent `ep.europa.kiwi`. Le domaine a été activé après
-vérification du CNAME DNS. L’accès HTTPS nécessite également la délivrance
-du certificat par GitHub.
+The kiwi is the actual user-supplied
+`new_images/IL_2026.10.02_Themes_Kiwi.svg` from `EP_Illustrations_Kit`.
+`assets/kiwi-original.svg` is a byte-for-byte copy. `assets/kiwi-hero.webp`
+is a 1400px-wide web rendering (about 66 KB); `assets/kiwi-mark.webp` and
+`favicon.png` crop the original `kiwi-half` group without redrawing or
+recolouring it. The originals in the supplied kit are never modified.
+The full illustration has descriptive English alt text; the repeated brand
+accent is decorative. The kiwi appears in the identity, hero and favicon,
+with "fresh start" copy connecting it to the portal's purpose.
 
-Dans la zone DNS OVH de `europa.kiwi`, créer :
+**Intentional exceptions:** the kiwi's original brown fruit colours and
+background are preserved as the requested playful departure. The book
+restricts naturalistic skin/hair colours to people in institutional
+illustrations (pp.31/50); this supplied fruit artwork is therefore not claimed
+to comply fully with that palette rule. No European Parliament logo, seal or
+institutional word mark is added: those identify Parliament-authored
+communications (pp.18–24), whereas this portal is independent. The footer
+states that no endorsement is implied. These exceptions and the font
+fallback mean this is a **brandbook-informed independent design**, not an
+unconditional claim of official brand compliance.
 
-| Type | Sous-domaine | Cible |
+## GitHub Pages and domain
+
+Pages deploys from branch `main`, root `/`. `.nojekyll` disables Jekyll
+processing. Each push to `main` publishes the site.
+
+The root `CNAME` file and Pages custom-domain setting must both contain
+`ep.europa.kiwi`. The OVH DNS zone for `europa.kiwi` uses:
+
+| Type | Subdomain | Target |
 | --- | --- | --- |
 | CNAME | `ep` | `modulow.github.io.` |
 
-La cible est un nom d’hôte, sans protocole ni chemin. Ne pas laisser
-d’enregistrements A ou AAAA sur `ep` en parallèle du CNAME. Ne pas modifier
-les autres sous-domaines ni le domaine `ld-europa.eu`.
+The target is a hostname, with no scheme or path. Do not add conflicting
+A/AAAA records on `ep`, change other subdomains or modify `ld-europa.eu`.
+GitHub has provisioned the certificate and **Enforce HTTPS** is enabled.
+If reconfiguring the domain, verify DNS first, wait for certificate issuance,
+then enable HTTPS enforcement.
 
-Lors d’une nouvelle configuration, vérifier d’abord que le CNAME DNS est
-résolu, puis configurer `ep.europa.kiwi` comme domaine personnalisé dans
-Pages et conserver le fichier `CNAME` contenant uniquement `ep.europa.kiwi`.
-Attendre la délivrance du certificat par GitHub, puis activer
-**Enforce HTTPS** dans Pages lorsque cette option est disponible.
-La présence de ce fichier dans le dépôt ne configure pas le DNS OVH.
-
-**Attention aux sites de projets :** les projets GitHub Pages de `modulow`
-sans domaine personnalisé peuvent hériter du domaine du site utilisateur.
-Les liens `modulow.github.io/ep-l-d-brochure/` et
-`modulow.github.io/sharepoint-ticketing/` peuvent donc être redirigés vers
-`ep.europa.kiwi` avec le même chemin. Ils dépendent alors aussi du DNS et du
-certificat du portail. Vérifier les deux chaînes de redirection après toute
-modification de domaine. L’emploi du temps conserve son domaine
-personnalisé `ld-europa.eu`.
+Project sites without their own custom domain inherit the user-site domain.
+The brochure and ticketing GitHub URLs redirect to `ep.europa.kiwi` with the
+same paths. Verify those redirect chains after any domain change; the timetable
+keeps its own domain, `ld-europa.eu`. Adding `CNAME` in Git does not configure
+OVH DNS.
