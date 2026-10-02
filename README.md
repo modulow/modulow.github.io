@@ -48,15 +48,17 @@ The kiwi is the actual user-supplied
 `new_images/IL_2026.10.02_Themes_Kiwi.svg` from `EP_Illustrations_Kit`.
 `assets/kiwi-original.svg` is a byte-for-byte copy. `assets/kiwi-hero.webp`
 is a tightly framed 1400px-wide transparent web rendering (about 33 KB),
-with the background, texture blob and ground shadow omitted. The original
+with the background and ground shadow omitted. `assets/kiwi-blob.webp`
+separately renders the original textured blob group (about 189 KB), layered
+behind the enlarged fruit on white. The original
 fruit shapes and colours are unchanged. The illustration sits on white,
 enlarged so its lower edge extends behind the foreground blue Explore band.
-The feature heading and caption have no coloured framing bands.
+The decorative composition has no feature heading or caption.
 `assets/kiwi-mark.webp` and
 `favicon.png` crop the original `kiwi-half` group without redrawing or
 recolouring it. The originals in the supplied kit are never modified.
-The fruit illustration has descriptive English alt text; the repeated brand
-accent is decorative. The kiwi appears in the identity, hero and favicon,
+The fruit, blob and repeated brand accent are decorative with empty alt text.
+The home link retains its accessible name. The kiwi appears in the identity, hero and favicon,
 with "fresh start" copy connecting it to the portal's purpose.
 
 **Intentional exceptions:** the kiwi's original brown fruit colours
@@ -65,8 +67,8 @@ restricts naturalistic skin/hair colours to people in institutional
 illustrations (pp.31/50); this supplied fruit artwork is therefore not claimed
 to comply fully with that palette rule. No European Parliament logo, seal or
 institutional word mark is added: those identify Parliament-authored
-communications (pp.18–24), whereas this portal is independent. The footer
-states that no endorsement is implied. These exceptions and the font
+communications (pp.18–24), whereas this portal is independent. No
+institutional endorsement is claimed. These exceptions and the font
 fallback mean this is a **brandbook-informed independent design**, not an
 unconditional claim of official brand compliance.
 
