@@ -6,7 +6,7 @@ An independent English-language portal at **https://ep.europa.kiwi/**.
 | --- | --- |
 | EP Learning Catalogue | https://modulow.github.io/ep-l-d-brochure/ |
 | Time Table Generator | https://ep.europa.kiwi/jma-timetable/ |
-| IT support / ticketing | https://modulow.github.io/sharepoint-ticketing/ |
+| L&D IT Support | https://modulow.github.io/sharepoint-ticketing/ |
 
 ## Working on the portal
 
