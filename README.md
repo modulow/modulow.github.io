@@ -30,6 +30,9 @@ A one-second introductory loader pulses the kiwi mark once, then reveals the por
 It is absent without JavaScript, dismisses on keyboard focus and disables the
 pulse for reduced-motion users. The hero entrance waits one second after
 the loader disappears before rising into the page.
+The two small hero kiwis enter in 900ms, twice as slowly as the large half
+(450ms). Separate aligned images preserve the original fruit composition
+and share the existing scroll speed, hero clipping and reduced-motion fallback.
 Cards rise into view once with a brisk 380ms scroll entrance, progressively
 enhanced with IntersectionObserver. Keyboard focus reveals a card immediately;
 reduced-motion users and browsers without JavaScript see all cards normally.
