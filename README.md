@@ -5,7 +5,7 @@ An independent English-language portal at **https://ep.europa.kiwi/**.
 | Destination | Link |
 | --- | --- |
 | L&D brochure | https://modulow.github.io/ep-l-d-brochure/ |
-| Timetable | https://ld-europa.eu/ |
+| Timetable | https://ep.europa.kiwi/jma-timetable/ |
 | IT support / ticketing | https://modulow.github.io/sharepoint-ticketing/ |
 
 ## Working on the portal
@@ -112,13 +112,14 @@ The root `CNAME` file and Pages custom-domain setting must both contain
 | CNAME | `ep` | `modulow.github.io.` |
 
 The target is a hostname, with no scheme or path. Do not add conflicting
-A/AAAA records on `ep`, change other subdomains or modify `ld-europa.eu`.
+A/AAAA records on `ep` or change other subdomains.
 GitHub has provisioned the certificate and **Enforce HTTPS** is enabled.
 If reconfiguring the domain, verify DNS first, wait for certificate issuance,
 then enable HTTPS enforcement.
 
 Project sites without their own custom domain inherit the user-site domain.
 The brochure and ticketing GitHub URLs redirect to `ep.europa.kiwi` with the
-same paths. Verify those redirect chains after any domain change; the timetable
-keeps its own domain, `ld-europa.eu`. Adding `CNAME` in Git does not configure
+same paths. The timetable project also uses the inherited domain at
+`/jma-timetable/`, without its former `ld-europa.eu` custom domain.
+Verify these destinations after any domain change. Adding `CNAME` in Git does not configure
 OVH DNS.
