@@ -34,21 +34,23 @@ a:focus-visible, [tabindex="-1"]:focus-visible {
 .header-link:hover { text-decoration: underline; text-underline-offset: 5px; }
 .header-link > span { color: var(--blue); font-size: 20px; }
 .hero { position: relative; z-index: 0; overflow-x: clip; }
-.hero-inner { display: grid; grid-template-columns: .9fr 1.1fr; gap: 120px; align-items: center; padding-top: 48px; }
-.hero-copy { min-width: 0; }
+.hero-inner { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 120px; align-items: center; padding-top: 48px; }
+.hero-copy { position: relative; z-index: 3; min-width: 0; width: min(780px, calc(100vw - 96px)); }
 .eyebrow { margin: 0 0 14px; font-size: 12px; line-height: 1.6; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--blue); }
 .dialogue { display: flex; align-items: center; gap: 12px; }
 .dialogue::before { content: ""; width: 26px; height: 3px; flex-shrink: 0; background: var(--blue); }
-h1 { margin: 0; font-size: clamp(36px, 4.4vw, 64px); line-height: 1.04; letter-spacing: -2px; font-weight: 700; text-transform: uppercase; }
-h1 span { display: block; color: var(--blue); font-size: 1.4em; line-height: .98; margin-top: 8px; }
+h1 { margin: 0; font-size: clamp(36px, 5.4vw, 78px); line-height: 1.04; letter-spacing: -2px; font-weight: 700; text-transform: uppercase; }
+.headline-line { display: table; background: var(--white); padding-right: 12px; }
+.headline-line + .headline-line { color: var(--blue); }
 .intro-text { margin: 24px 0; font-size: 16px; line-height: 1.7; }
+.intro-text > span { display: table; background: var(--white); padding-right: 8px; }
 .primary-link { display: inline-flex; align-items: center; justify-content: space-between; gap: 28px; min-height: 48px; padding: 14px 20px; background: var(--blue); color: var(--white); text-decoration: none; font-size: 14px; font-weight: 700; }
 .primary-link:hover { text-decoration: underline; text-underline-offset: 4px; }
 .kiwi-feature { position: relative; background: var(--white); min-width: 0; height: 500px; }
 .kiwi-feature::after { content: ""; position: absolute; z-index: 2; right: -5%; bottom: 24px; width: 80px; height: 7px; background: var(--yellow); }
 .kiwi-art, .kiwi-blob { position: absolute; max-width: none; pointer-events: none; }
 .kiwi-art { z-index: 1; width: 125%; right: -8%; bottom: -90px; }
-.kiwi-blob { z-index: 0; width: 125%; right: -8%; bottom: -60px; }
+.kiwi-blob { z-index: 0; width: 160%; right: -40%; bottom: -60px; }
 .wayfinding { position: relative; z-index: 2; background: var(--blue); color: var(--white); }
 .wayfinding-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-block: 20px; }
 .wayfinding p { margin: 0; font-size: 15px; font-weight: 700; }
@@ -83,6 +85,7 @@ h3 { margin: 0; font-size: 28px; line-height: 1.2; letter-spacing: -.6px; font-w
 @media (max-width: 1100px) {
   .container { width: calc(100% - 64px); }
   .hero-inner { gap: 96px; padding-top: 40px; }
+  .hero-copy { width: calc(100vw - 64px); }
   .kiwi-feature { height: 420px; }
   .cards { gap: 16px; }
   .card { padding: 22px; }
@@ -91,7 +94,8 @@ h3 { margin: 0; font-size: 28px; line-height: 1.2; letter-spacing: -.6px; font-w
 
 @media (max-width: 800px) {
   .hero-inner { grid-template-columns: 1fr; gap: 32px; }
-  h1 { font-size: clamp(36px, 6.5vw, 52px); }
+  .hero-copy { width: 100%; }
+  h1 { font-size: clamp(32px, 6.5vw, 52px); }
   .kiwi-feature { max-width: 540px; width: 100%; height: 400px; margin-inline: auto; }
   .cards { grid-template-columns: 1fr; gap: 20px; }
   .card { padding: 26px; }
@@ -110,9 +114,9 @@ h3 { margin: 0; font-size: 28px; line-height: 1.2; letter-spacing: -.6px; font-w
   .hero-inner { padding-top: 36px; }
   .kiwi-feature { height: 290px; }
   .kiwi-art { bottom: -70px; width: 120%; right: -10%; }
-  .kiwi-blob { bottom: -40px; width: 130%; right: -15%; }
+  .kiwi-blob { bottom: -40px; width: 160%; right: -45%; }
   .kiwi-feature::after { right: 0; bottom: 20px; width: 48px; height: 5px; }
-  h1 { font-size: clamp(32px, 9vw, 43px); letter-spacing: -1px; }
+  h1 { font-size: clamp(27px, 8.2vw, 39px); letter-spacing: -1px; }
   .eyebrow { font-size: 10px; letter-spacing: 1px; }
   .dialogue { gap: 8px; }
   .dialogue::before { width: 18px; }

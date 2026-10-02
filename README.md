@@ -50,12 +50,18 @@ The kiwi is the actual user-supplied
 is a tightly framed 1400px-wide transparent web rendering (about 33 KB),
 with the background and ground shadow omitted. `assets/kiwi-blob.webp`
 separately renders the original textured blob group (about 189 KB), layered
-behind the enlarged fruit on white. The original
-fruit shapes and colours are unchanged. The illustration sits on white,
+behind the enlarged fruit on white. The
+blob is oversized and deliberately bleeds past the right viewport edge;
+only the full-width hero clips that bleed, not its inner grid container.
+Original fruit shapes and colours are unchanged. The illustration sits on white,
 enlarged so its lower edge extends behind the foreground blue Explore band.
 The decorative composition has no feature heading or caption.
 The header title reads `ep.europa.kiwi`, with `A fresh perspective` directly
-below it on the same left edge. The hero's `fresh start` phrase is enlarged,
+below it on the same left edge. The hero headline uses a uniform font size
+across two deliberate lines, with matching two-line supporting copy on
+desktop/tablet (body copy wraps naturally on narrow phones to stay readable).
+The foreground text has a white backing where it crosses the illustration.
+The apps section and its navigation link are labelled `Fresh Apps`,
 and a decorative yellow dialogue stroke follows the kiwi above the Explore
 band, using the book's horizontal graphic-device principle (p.58).
 `assets/kiwi-mark.webp` and
