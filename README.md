@@ -16,6 +16,13 @@ attributes in `index.html` and this table when changing destinations.
 `styles.css` defines the responsive layout, keyboard-visible focus, reduced
 motion and forced-colour support. All links open in the same tab.
 
+GitHub Pages serves assets with a ten-minute browser cache. The stylesheet
+and hero image references in `index.html` include a `?v=` content revision so
+returning browsers fetch the changed assets with a fresh page. When editing
+either file, update its revision (for example, the first 12 characters of its
+SHA-256 hash). A page refresh may still be needed for cached HTML; adding a
+new `?v=` revision to the page URL bypasses that older document.
+
 ## Visual identity and artwork
 
 The design follows the supplied **Annex VIII - European Parliament Brand
