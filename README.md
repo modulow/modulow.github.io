@@ -19,6 +19,8 @@ motion and forced-colour support. All links open in the same tab.
 fixed scroll layers. A passive scroll listener schedules transform-only
 movement with animation frames; geometry is measured only at setup/resize.
 Clipping limits both layers to the hero below the compact sticky header.
+The header becomes smaller after 48px of scrolling, reserving its original
+layout space to avoid content jumps. Its subtitle meets the kiwi icon's base.
 Reduced-motion users (and browsers without JavaScript) get static artwork.
 The apps anchor leaves room for the sticky header and keyboard focus.
 
