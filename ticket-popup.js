@@ -3,6 +3,7 @@ import config from "./portal-config.js";
 const TICKET_MESSAGE = "kiwi-ticket-created";
 const SHAREPOINT_HOST = "europarl.sharepoint.com";
 const TICKETS_PATH = "/sites/learn.IT-Kiwi/Lists/EuropaTickets/";
+const SUPPORT_APP_URL = "https://modulow.github.io/sharepoint-ticketing/";
 
 export function buildTicketFormUrl(listUrl, callbackUrl) {
   const list = new URL(listUrl);
@@ -81,12 +82,12 @@ export function initializeTicketPopup() {
       if (ticketLink.hasAttribute("rel")) ticketLink.removeAttribute("rel");
     }
 
-    if (supportCard && supportCard.href !== directTicketUrl) supportCard.href = directTicketUrl;
+    if (supportCard && supportCard.href !== SUPPORT_APP_URL) supportCard.href = SUPPORT_APP_URL;
   };
 
   document.addEventListener("click", (event) => {
     const target = event.target instanceof Element
-      ? event.target.closest("#ticket-link, .card-support")
+      ? event.target.closest("#ticket-link")
       : null;
     if (target) openTicketForm(event);
   });
