@@ -6,15 +6,28 @@
       "Published": true,
       "Payload": {
         "eyebrow": "Hello, Welcome colleague.",
-        "headline": ["Fresh apps.", "Fresh start."],
-        "intro": ["Discover the L&D Learning Offer. Make a plan. Get IT support.", "Everything starts here"],
+        "headline": [
+          "Fresh apps.",
+          "Fresh start."
+        ],
+        "intro": [
+          "Discover the L&D Learning Offer. Make a plan. Get IT support.",
+          "Everything starts here"
+        ],
         "primaryLink": "Our IT tools",
         "essentials": "Your daily essentials",
         "appsTitle": "Apps",
-        "steps": ["Learn.", "Plan.", "Get IT support."],
+        "steps": [
+          "Learn.",
+          "Plan.",
+          "Get IT support."
+        ],
         "accessNote": "Each link takes you to its destination in the same tab. Use your browser's Back button to return here.",
         "footerEyebrow": "L&D, a fresh start, every day",
-        "footerLines": ["big on learning.", "Creativity on the side."]
+        "footerLines": [
+          "big on learning.",
+          "Creativity on the side."
+        ]
       }
     },
     {
