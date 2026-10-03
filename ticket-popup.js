@@ -72,18 +72,23 @@ export function initializeTicketPopup() {
     return;
   }
 
-  if (ticketLink) {
-    ticketLink.hidden = false;
-    ticketLink.href = directTicketUrl;
-    ticketLink.removeAttribute("target");
-    ticketLink.removeAttribute("rel");
-    ticketLink.addEventListener("click", openTicketForm);
-  }
+  const applyTicketLinks = () => {
+    if (ticketLink) {
+      ticketLink.hidden = false;
+      ticketLink.href = directTicketUrl;
+      ticketLink.removeAttribute("target");
+      ticketLink.removeAttribute("rel");
+    }
 
-  if (supportCard) {
-    supportCard.href = directTicketUrl;
-    supportCard.addEventListener("click", openTicketForm);
-  }
+    if (supportCard) supportCard.href = directTicketUrl;
+  };
+
+  if (ticketLink) ticketLink.addEventListener("click", openTicketForm);
+  if (supportCard) supportCard.addEventListener("click", openTicketForm);
+
+  applyTicketLinks();
+  window.addEventListener("load", applyTicketLinks, { once: true });
+  window.setTimeout(applyTicketLinks, 1500);
 
   window.addEventListener("message", (event) => {
     if (event.origin !== window.location.origin) return;
