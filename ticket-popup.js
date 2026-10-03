@@ -1,117 +1,50 @@
 import config from "./portal-config.js";
 
-const TICKET_MESSAGE = "kiwi-ticket-created";
-const SHAREPOINT_HOST = "europarl.sharepoint.com";
-const TICKETS_PATH = "/sites/learn.IT-Kiwi/Lists/EuropaTickets/";
-const SUPPORT_APP_URL = "https://modulow.github.io/sharepoint-ticketing/";
+const SUPPORT_APP_URL = "https://ep.europa.kiwi/sharepoint-ticketing/";
 
-export function buildTicketFormUrl(listUrl, callbackUrl) {
-  const list = new URL(listUrl);
-  const callback = new URL(callbackUrl);
-
-  if (
-    list.protocol !== "https:" ||
-    list.hostname !== SHAREPOINT_HOST ||
-    !list.pathname.startsWith(TICKETS_PATH)
-  ) {
-    throw new Error("Invalid SharePoint ticket list URL.");
-  }
-
-  const form = new URL(`${TICKETS_PATH}NewForm.aspx`, list.origin);
-  form.searchParams.set("Source", callback.href);
-  return form.href;
-}
-
-function setStatus(message) {
+function applyTicketingLinks() {
+  const supportCard = document.querySelector(".card-support");
+  const createLink = document.getElementById("ticket-link");
+  const ticketsLink = document.getElementById("ticket-list-link");
   const status = document.getElementById("ticket-status");
-  if (status) status.textContent = message;
-}
 
-function openTicketForm(event) {
-  event?.preventDefault();
-
-  let ticketUrl;
-  try {
-    ticketUrl = buildTicketFormUrl(
-      config.ticketsUrl,
-      new URL("./ticket-sent.html", window.location.href)
-    );
-  } catch {
-    setStatus("The ticket form is temporarily unavailable.");
-    return;
+  if (supportCard && supportCard.href !== SUPPORT_APP_URL) {
+    supportCard.href = SUPPORT_APP_URL;
   }
 
-  const popup = window.open(
-    ticketUrl,
-    "kiwi-ticket-form",
-    "popup=yes,width=760,height=860,resizable=yes,scrollbars=yes"
-  );
-
-  if (!popup) {
-    setStatus("Your browser blocked the ticket window. Allow pop-ups for Kiwi and try again.");
-    return;
+  if (createLink) {
+    const createUrl = `${SUPPORT_APP_URL}?action=create`;
+    if (createLink.hidden) createLink.hidden = false;
+    if (createLink.href !== createUrl) createLink.href = createUrl;
+    if (createLink.hasAttribute("target")) createLink.removeAttribute("target");
+    if (createLink.hasAttribute("rel")) createLink.removeAttribute("rel");
   }
 
-  popup.focus();
-  setStatus("The secure Microsoft 365 ticket window is open. Kiwi will stay here for you.");
+  if (ticketsLink) {
+    const ticketsUrl = `${SUPPORT_APP_URL}?action=tickets`;
+    if (ticketsLink.href !== ticketsUrl) ticketsLink.href = ticketsUrl;
+    if (ticketsLink.hasAttribute("target")) ticketsLink.removeAttribute("target");
+    if (ticketsLink.hasAttribute("rel")) ticketsLink.removeAttribute("rel");
+  }
+
+  if (status) {
+    status.textContent = "Open the ticketing application to create and manage your requests securely.";
+  }
 }
 
-export function initializeTicketPopup() {
+export function initializeTicketingLinks() {
   if (!config.ticketsEnabled) return;
 
-  let directTicketUrl;
-
-  try {
-    directTicketUrl = buildTicketFormUrl(
-      config.ticketsUrl,
-      new URL("./ticket-sent.html", window.location.href)
-    );
-  } catch {
-    setStatus("The ticket form is temporarily unavailable.");
-    return;
-  }
-
-  const applyTicketLinks = () => {
-    const ticketLink = document.getElementById("ticket-link");
-    const supportCard = document.querySelector(".card-support");
-
-    if (ticketLink) {
-      if (ticketLink.hidden) ticketLink.hidden = false;
-      if (ticketLink.href !== directTicketUrl) ticketLink.href = directTicketUrl;
-      if (ticketLink.hasAttribute("target")) ticketLink.removeAttribute("target");
-      if (ticketLink.hasAttribute("rel")) ticketLink.removeAttribute("rel");
-    }
-
-    if (supportCard && supportCard.href !== SUPPORT_APP_URL) supportCard.href = SUPPORT_APP_URL;
-  };
-
-  document.addEventListener("click", (event) => {
-    const target = event.target instanceof Element
-      ? event.target.closest("#ticket-link")
-      : null;
-    if (target) openTicketForm(event);
-  });
-
-  applyTicketLinks();
-  const linkObserver = new MutationObserver(applyTicketLinks);
-  linkObserver.observe(document.body, {
+  applyTicketingLinks();
+  const observer = new MutationObserver(applyTicketingLinks);
+  observer.observe(document.body, {
     attributes: true,
-    attributeFilter: ["href", "hidden"],
+    attributeFilter: ["href", "hidden", "target", "rel"],
     childList: true,
     subtree: true
   });
-
-  window.addEventListener("message", (event) => {
-    if (event.origin !== window.location.origin) return;
-    if (event.data?.type !== TICKET_MESSAGE) return;
-
-    setStatus("Your ticket was submitted successfully.");
-    window.focus();
-  });
-
-  setStatus("Create a ticket securely with your Microsoft 365 account, or view your existing tickets.");
 }
 
 if (typeof window !== "undefined" && typeof document !== "undefined") {
-  initializeTicketPopup();
+  initializeTicketingLinks();
 }
