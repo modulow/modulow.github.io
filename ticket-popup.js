@@ -58,8 +58,6 @@ function openTicketForm(event) {
 export function initializeTicketPopup() {
   if (!config.ticketsEnabled) return;
 
-  const ticketLink = document.getElementById("ticket-link");
-  const supportCard = document.querySelector(".card-support");
   let directTicketUrl;
 
   try {
@@ -73,22 +71,34 @@ export function initializeTicketPopup() {
   }
 
   const applyTicketLinks = () => {
+    const ticketLink = document.getElementById("ticket-link");
+    const supportCard = document.querySelector(".card-support");
+
     if (ticketLink) {
-      ticketLink.hidden = false;
-      ticketLink.href = directTicketUrl;
-      ticketLink.removeAttribute("target");
-      ticketLink.removeAttribute("rel");
+      if (ticketLink.hidden) ticketLink.hidden = false;
+      if (ticketLink.href !== directTicketUrl) ticketLink.href = directTicketUrl;
+      if (ticketLink.hasAttribute("target")) ticketLink.removeAttribute("target");
+      if (ticketLink.hasAttribute("rel")) ticketLink.removeAttribute("rel");
     }
 
-    if (supportCard) supportCard.href = directTicketUrl;
+    if (supportCard && supportCard.href !== directTicketUrl) supportCard.href = directTicketUrl;
   };
 
-  if (ticketLink) ticketLink.addEventListener("click", openTicketForm);
-  if (supportCard) supportCard.addEventListener("click", openTicketForm);
+  document.addEventListener("click", (event) => {
+    const target = event.target instanceof Element
+      ? event.target.closest("#ticket-link, .card-support")
+      : null;
+    if (target) openTicketForm(event);
+  });
 
   applyTicketLinks();
-  window.addEventListener("load", applyTicketLinks, { once: true });
-  window.setTimeout(applyTicketLinks, 1500);
+  const linkObserver = new MutationObserver(applyTicketLinks);
+  linkObserver.observe(document.body, {
+    attributes: true,
+    attributeFilter: ["href", "hidden"],
+    childList: true,
+    subtree: true
+  });
 
   window.addEventListener("message", (event) => {
     if (event.origin !== window.location.origin) return;
