@@ -113,9 +113,10 @@
       <section id="tickets" class="tickets container" aria-labelledby="tickets-title" tabindex="-1">
         <p class="eyebrow">Get support</p>
         <h2 id="tickets-title">Your IT tickets</h2>
-        <p>Create and view your requests directly in SharePoint using its Microsoft 365 sign-in. No tickets are stored or displayed on this public portal.</p>
-        <p id="ticket-status" class="integration-status" role="status">The new SharePoint ticket destination is not activated yet.</p>
-        <a id="ticket-link" class="primary-link" hidden>Open tickets in SharePoint <span aria-hidden="true">↗</span></a>
+        <p>Create a request in a secure SharePoint window. Kiwi stays open while Microsoft 365 signs you in and records your identity.</p>
+        <p id="ticket-status" class="integration-status" role="status">Choose an option below.</p>
+        <a id="ticket-link" class="primary-link" hidden>Create a ticket <span aria-hidden="true">↗</span></a>
+        <a id="ticket-list-link" href="https://europarl.sharepoint.com/sites/learn.IT-Kiwi/Lists/EuropaTickets/AllItems.aspx" target="kiwi-ticket-list" rel="noopener noreferrer">View my tickets <span aria-hidden="true">↗</span></a>
         <p class="access-note">Do not include passwords, access tokens or sensitive personal information in a ticket.</p>
       </section>
     </main>
@@ -136,5 +137,6 @@
     </footer>
     <script src="hero.js?v=d285ec24599e" defer></script>
     <script type="module" src="portal.js?v=9c719c8f706a"></script>
+    <script type="module" src="ticket-popup.js?v=20261003-1"></script>
   </body>
 </html>
