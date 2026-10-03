@@ -60,17 +60,28 @@ export function initializeTicketPopup() {
 
   const ticketLink = document.getElementById("ticket-link");
   const supportCard = document.querySelector(".card-support");
+  let directTicketUrl;
+
+  try {
+    directTicketUrl = buildTicketFormUrl(
+      config.ticketsUrl,
+      new URL("./ticket-sent.html", window.location.href)
+    );
+  } catch {
+    setStatus("The ticket form is temporarily unavailable.");
+    return;
+  }
 
   if (ticketLink) {
     ticketLink.hidden = false;
-    ticketLink.href = `${TICKETS_PATH}NewForm.aspx`;
+    ticketLink.href = directTicketUrl;
     ticketLink.removeAttribute("target");
     ticketLink.removeAttribute("rel");
     ticketLink.addEventListener("click", openTicketForm);
   }
 
   if (supportCard) {
-    supportCard.href = `${TICKETS_PATH}NewForm.aspx`;
+    supportCard.href = directTicketUrl;
     supportCard.addEventListener("click", openTicketForm);
   }
 
