@@ -6,7 +6,7 @@
     <meta name="description" content="An L&amp;D applications portal — Discover the L&amp;D Learning Offer. Make a plan. Get IT support.">
     <meta name="theme-color" content="#0c4da2">
     <title>ep.europa.kiwi — An L&amp;D applications portal</title>
-    <link rel="stylesheet" href="styles.css?v=461474810831">
+    <link rel="stylesheet" href="styles.css?v=6e72a0c7dbff">
     <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
   </head>
   <body>
@@ -56,6 +56,8 @@
             <h2 id="access-title">Apps</h2>
           </div>
         </div>
+        <p id="content-status" class="integration-status" role="status" hidden></p>
+        <noscript><p class="access-note">Live SharePoint content requires JavaScript. The static portal below is the original reference content.</p></noscript>
         <div class="cards">
           <a class="card card-brochure" href="https://modulow.github.io/ep-l-d-brochure/">
             <div class="card-top">
@@ -108,6 +110,14 @@
         </div>
         <p class="access-note">Each link takes you to its destination in the same tab. Use your browser’s Back button to return here.</p>
       </section>
+      <section id="tickets" class="tickets container" aria-labelledby="tickets-title" tabindex="-1">
+        <p class="eyebrow">Get support</p>
+        <h2 id="tickets-title">Your IT tickets</h2>
+        <p>Create and view your requests directly in SharePoint using its Microsoft 365 sign-in. No tickets are stored or displayed on this public portal.</p>
+        <p id="ticket-status" class="integration-status" role="status">The new SharePoint ticket destination is not activated yet.</p>
+        <a id="ticket-link" class="primary-link" hidden>Open tickets in SharePoint <span aria-hidden="true">↗</span></a>
+        <p class="access-note">Do not include passwords, access tokens or sensitive personal information in a ticket.</p>
+      </section>
     </main>
 
     <footer id="footer" class="footer">
@@ -125,5 +135,6 @@
       </div>
     </footer>
     <script src="hero.js?v=d285ec24599e" defer></script>
+    <script type="module" src="portal.js?v=9c719c8f706a"></script>
   </body>
 </html>

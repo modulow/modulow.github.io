@@ -10,9 +10,16 @@ An independent English-language portal at **https://ep.europa.kiwi/**.
 
 ## Working on the portal
 
-Open `index.html` in a browser. There is no build step, tracking,
-external font request or runtime dependency. Update the three card `href`
-attributes in `index.html` and this table when changing destinations.
+The original static portal remains available with SharePoint disabled.
+Serve this directory over HTTP to use the module-based integration (do not
+open it via `file://`). There is no tracking or external font request.
+There is no frontend build or authentication library. Power Automate publishes
+approved content to a SharePoint file which is reviewed and manually copied
+to this repository as `content.json`; tickets open directly in
+SharePoint with its native Microsoft 365 sign-in.
+With SharePoint disabled, update the three card `href` attributes in
+`index.html` and this table when changing destinations. With it enabled,
+edit the published SharePoint records and manually review/publish their export.
 `styles.css` defines the responsive layout, keyboard-visible focus, reduced
 motion and forced-colour support. All links open in the same tab.
 `hero.js` progressively enhances the decorative fruit and blob into separate
@@ -42,6 +49,32 @@ and share the existing scroll speed, hero clipping and reduced-motion fallback.
 Cards rise into view once with a brisk 380ms scroll entrance, progressively
 enhanced with IntersectionObserver. Keyboard focus reveals a card immediately;
 reduced-motion users and browsers without JavaScript see all cards normally.
+
+## SharePoint content and tickets
+
+The optional integration targets
+`https://europarl.sharepoint.com/sites/learn.IT-Kiwi` through a SharePoint-only
+Power Automate export followed by manual publication of `content.json`.
+The initial public `content.json` is generated from the authorised seed and
+its reading is **enabled**. The native ticket destination remains disabled
+pending verification of its effective permissions.
+`portal-config.js` contains public settings only. There is no Worker, HTTP
+flow, cloud secret, custom Entra app, Graph token or MSAL dependency.
+If an enabled export is missing or invalid, the original page stays visible
+with an explicit fallback warning.
+
+Published page/card content is public. Creating or reading tickets requires
+Microsoft 365 sign-in **inside SharePoint**. Authors submit and view only
+their own tickets; modifications are reserved to support administrators,
+subject to verified SharePoint permissions. No ticket data goes through
+the export or this public page. The ticket link has its own activation flag.
+
+See [the provisioning guide](backend/README.md) for the exact list schema,
+initial content, Power Automate contract, native ticket permissions,
+configuration and manual publication checklist. `npm test` checks strict
+publication validation, safe rendering and fallback behaviour.
+`npm run check:content` validates the reviewed root `content.json` before
+publication (fails explicitly if absent). Neither command publishes Pages.
 
 GitHub Pages serves assets with a ten-minute browser cache. The stylesheet
 and script/hero image references in `index.html` include a `?v=` content revision so
