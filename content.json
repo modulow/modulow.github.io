@@ -2,6 +2,17 @@
   "schemaVersion": 1,
   "records": [
     {
+      "Title": "brochure",
+      "Published": true,
+      "Payload": {
+        "category": "Learn",
+        "title": "EP Learning Catalogue",
+        "description": "Browse The EP Learning Offer 2027 and find useful trainings, all in one place",
+        "action": "Explore the brochure",
+        "href": "https://modulow.github.io/ep-l-d-brochure/"
+      }
+    },
+    {
       "Title": "page",
       "Published": true,
       "Payload": {
@@ -22,23 +33,12 @@
           "Plan.",
           "Get IT support."
         ],
-        "accessNote": "Each link takes you to its destination in the same tab. Use your browser's Back button to return here.",
-        "footerEyebrow": "L&D, a fresh start, every day",
+        "accessNote": "Each link takes you to its destination in the same tab. Use your browser's Back button to return here. Test",
+        "footerEyebrow": "L&D, a fresh start, every day test",
         "footerLines": [
           "big on learning.",
           "Creativity on the side."
         ]
-      }
-    },
-    {
-      "Title": "brochure",
-      "Published": true,
-      "Payload": {
-        "category": "Learn",
-        "title": "EP Learning Catalogue",
-        "description": "Browse The EP Learning Offer 2027 and find useful trainings, all in one place",
-        "action": "Explore the brochure",
-        "href": "https://modulow.github.io/ep-l-d-brochure/"
       }
     },
     {
