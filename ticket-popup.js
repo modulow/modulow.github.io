@@ -28,7 +28,8 @@ function applyTicketingLinks() {
   }
 
   if (status) {
-    status.textContent = "Open the ticketing application to create and manage your requests securely.";
+    const message = "Open the ticketing application to create and manage your requests securely.";
+    if (status.textContent !== message) status.textContent = message;
   }
 }
 
