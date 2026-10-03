@@ -1,0 +1,51 @@
+[
+  {
+    "Title": "page",
+    "Published": false,
+    "Payload": {
+      "eyebrow": "Hello, Welcome colleague.",
+      "headline": ["Fresh apps.", "Fresh start."],
+      "intro": ["Discover the L&D Learning Offer. Make a plan. Get IT support.", "Everything starts here"],
+      "primaryLink": "Our IT tools",
+      "essentials": "Your daily essentials",
+      "appsTitle": "Apps",
+      "steps": ["Learn.", "Plan.", "Get IT support."],
+      "accessNote": "Each link takes you to its destination in the same tab. Use your browser's Back button to return here.",
+      "footerEyebrow": "L&D, a fresh start, every day",
+      "footerLines": ["big on learning.", "Creativity on the side."]
+    }
+  },
+  {
+    "Title": "brochure",
+    "Published": false,
+    "Payload": {
+      "category": "Learn",
+      "title": "EP Learning Catalogue",
+      "description": "Browse The EP Learning Offer 2027 and find useful trainings, all in one place",
+      "action": "Explore the brochure",
+      "href": "https://modulow.github.io/ep-l-d-brochure/"
+    }
+  },
+  {
+    "Title": "schedule",
+    "Published": false,
+    "Payload": {
+      "category": "Plan IT",
+      "title": "Time Table Generator",
+      "description": "See what your day has in store. Find your schedule and the times you need to plan ahead.",
+      "action": "View the timetable",
+      "href": "https://ep.europa.kiwi/jma-timetable/"
+    }
+  },
+  {
+    "Title": "support",
+    "Published": false,
+    "Payload": {
+      "category": "Get support",
+      "title": "L&D IT Support",
+      "description": "Technology getting in the way? Reach the helpdesk to create a ticket and follow your requests.",
+      "action": "Open IT support",
+      "href": "#tickets"
+    }
+  }
+]
