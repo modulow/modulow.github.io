@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { JSDOM } from "jsdom";
-import { initializePortal, ticketAgentsLink, ticketSubmitLink, ticketsLink } from "../portal-ui.js";
+import { initializePortal, ticketAgentsLink, ticketingPageLink, ticketSubmitLink, ticketsLink } from "../portal-ui.js";
 import { contentView } from "../backend/validation.js";
 import config from "../portal-config.js";
 
@@ -12,7 +12,8 @@ const content = () => ({ schemaVersion: 1, records: seed.map(value => ({ ...stru
 const native = "https://europarl.sharepoint.com/sites/learn.IT-Kiwi/Lists/EuropaTickets/AllItems.aspx";
 const submit = "https://europarl.sharepoint.com/:l:/s/learn.IT-Kiwi/JAAt_nP2M5fdRpr-S_YUyZICAaohrMu1P2lFpVhNeblaX-k?nav=Nzk3NjUwYjUtNmViMi00YzE1LTlhM2EtMDg4MzY3ZjlmZDBh";
 const agents = "https://europarl.sharepoint.com/sites/learn.IT-Kiwi/Lists/TicketExchanges/AllItems.aspx";
-const ticketSettings = { ticketsEnabled: true, ticketSubmitUrl: submit, ticketsUrl: native, ticketAgentsUrl: agents };
+const ticketingPage = "https://ep.europa.kiwi/sharepoint-ticketing/";
+const ticketSettings = { ticketsEnabled: true, ticketingPageUrl: ticketingPage, ticketSubmitUrl: submit, ticketsUrl: native, ticketAgentsUrl: agents };
 const settings = { enabled: true, contentRevision: "reviewed-2", ...ticketSettings };
 const ticketIds = ["#ticket-link", "#ticket-list-link", "#ticket-agents-link"];
 const dom = () => new JSDOM(html, { url: "https://ep.europa.kiwi" });
@@ -25,11 +26,10 @@ test("disabled configuration preserves original content/links without network or
   await initializePortal({ ...config, enabled: false, ticketsEnabled: false }, { document, window, fetcher: () => assert.fail("No network while disabled") });
   assert.equal(document.querySelector(".card-support").href, original);
   assert.equal(document.querySelector(".headline-line").textContent, "Fresh apps.");
-  assert.equal(original, "https://ep.europa.kiwi/#tickets");
+  assert.equal(original, ticketingPage);
   for (const id of ticketIds) assert.equal(document.querySelector(id).hidden, true);
   assert.equal(document.querySelector("#ticket-form"), null);
   assert.equal(html.includes("ticket-popup"), false);
-  assert.equal(html.includes("sharepoint-ticketing"), false);
   assert.equal(html.includes("msal"), false);
   window.close();
 });
@@ -40,7 +40,8 @@ test("published repository file validates and public config contains only naviga
   assert.deepEqual(published.records.map(record => record.Title).sort(), ["brochure", "page", "schedule", "support"]);
   assert.equal(config.enabled, true);
   assert.equal(config.ticketsEnabled, true);
-  assert.deepEqual(Object.keys(config).sort(), ["contentRevision", "enabled", "ticketAgentsUrl", "ticketSubmitUrl", "ticketsEnabled", "ticketsUrl"]);
+  assert.deepEqual(Object.keys(config).sort(), ["contentRevision", "enabled", "ticketAgentsUrl", "ticketSubmitUrl", "ticketingPageUrl", "ticketsEnabled", "ticketsUrl"]);
+  assert.equal(ticketingPageLink(config.ticketingPageUrl), ticketingPage);
   assert.equal(ticketSubmitLink(config.ticketSubmitUrl), submit);
   assert.equal(ticketsLink(config.ticketsUrl), native);
   assert.equal(ticketAgentsLink(config.ticketAgentsUrl), agents);
@@ -70,7 +71,7 @@ test("activated content updates text safely, keeps artwork/icons/classes and use
   assert.equal(document.querySelector(".headline-line img"), null);
   assert.equal(document.querySelector(".kiwi-feature").innerHTML, artwork);
   assert.deepEqual([...document.querySelectorAll(".card svg")].map(element => element.outerHTML), icons);
-  assert.equal(document.querySelector(".card-support").href, submit);
+  assert.equal(document.querySelector(".card-support").href, ticketingPage);
   assert.equal(document.querySelector("#ticket-link").href, submit);
   assert.equal(document.querySelector("#ticket-list-link").href, native);
   assert.equal(document.querySelector("#ticket-agents-link").href, agents);
@@ -109,7 +110,7 @@ test("invalid or missing file preserves the existing DOM with an explicit fallba
 test("ticket links activate independently without fetching any ticket or people data", async () => {
   const window = dom().window;
   await initializePortal({ ...settings, enabled: false }, { document: window.document, window, fetcher: () => assert.fail("No API") });
-  assert.equal(window.document.querySelector(".card-support").href, submit);
+  assert.equal(window.document.querySelector(".card-support").href, ticketingPage);
   for (const id of ticketIds) {
     const link = window.document.querySelector(id);
     assert.equal(link.hidden, false);

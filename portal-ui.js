@@ -44,8 +44,18 @@ export function ticketSubmitLink(value) {
   return url.href;
 }
 
+export function ticketingPageLink(value) {
+  const url = new URL(value);
+  if (url.protocol !== "https:" || url.hostname !== "ep.europa.kiwi" || url.username || url.password ||
+      url.port || url.search || url.hash || url.pathname !== "/sharepoint-ticketing/") {
+    throw new Error("Invalid Kiwi ticketing page URL.");
+  }
+  return url.href;
+}
+
 function ticketLinks(config) {
   return {
+    page: ticketingPageLink(config.ticketingPageUrl),
     submit: ticketSubmitLink(config.ticketSubmitUrl),
     list: ticketsLink(config.ticketsUrl),
     agents: ticketAgentsLink(config.ticketAgentsUrl)
@@ -100,7 +110,7 @@ export async function initializePortal(config, {
         $(selector).href = href;
         $(selector).hidden = false;
       }
-      nativeTickets = links.submit;
+      nativeTickets = links.page;
       $(".card-support").href = nativeTickets;
       message($("#ticket-status"), "Create an IT ticket in SharePoint. Microsoft 365 sign-in is required there.");
     } catch {

@@ -57,7 +57,10 @@ The optional integration targets
 Power Automate export followed by manual publication of `content.json`.
 The initial public `content.json` is generated from the authorised seed and
 its reading is **enabled**. Ticket links are **enabled** as navigation only:
-the support card and "Create an IT ticket" open the organisation's SharePoint
+the support card opens the Kiwi ticketing page
+(`https://ep.europa.kiwi/sharepoint-ticketing/`, maintained in the
+`modulow/sharepoint-ticketing` repository) in the same tab, and
+"Create an IT ticket" opens the organisation's SharePoint
 intake form. "Ticket queue (learn.IT agents)" opens the unfiltered
 `EuropaTickets` list and "Ticket exchanges (learn.IT agents)" opens the
 `TicketExchanges` list (list-wide access is limited to learn.IT Members/Owners;
@@ -76,7 +79,8 @@ subject to verified SharePoint permissions. No ticket data goes through
 the export or this public page. Ticket links have their own activation flag
 (`ticketsEnabled`) and each URL is checked against an exact allowlist
 (host `europarl.sharepoint.com`, site `learn.IT-Kiwi`, list path or
-`/:l:/s/learn.IT-Kiwi/<token>?nav=<id>` form link); any invalid URL hides all
+`/:l:/s/learn.IT-Kiwi/<token>?nav=<id>` form link; the ticketing page must be
+exactly `https://ep.europa.kiwi/sharepoint-ticketing/`); any invalid URL hides all
 ticket links and shows an error instead of navigating elsewhere.
 
 See [the provisioning guide](backend/README.md) for the exact list schema,
