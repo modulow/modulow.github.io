@@ -13,7 +13,8 @@ EuropaContent -> flux Power Automate utilisant SharePoint uniquement
               -> revue humaine -> content.json à la racine du dépôt
               -> publication GitHub Pages -> lecture navigateur même origine
 
-Tickets -> lien vers SharePoint -> login Microsoft 365 natif
+Tickets -> liens vers SharePoint (formulaire, EuropaTickets, TicketExchanges agents)
+        -> login Microsoft 365 natif ; aucune donnée lue par le portail
 ```
 
 Le flux HTTP **Kiwi - Published content API** avait été bloqué par la DLP.
@@ -24,8 +25,9 @@ retirés du dépôt. Aucun changement de ressource cloud n'est exécuté ici.
 
 Sur nouvelle instruction explicite de publication, `content.json` initial
 est généré directement du seed autorisé, avec les quatre records Published:true.
-`portal-config.js` active sa lecture (`enabled: true`) et conserve
-`ticketsEnabled: false`. Ce fichier n'est pas présenté comme un téléchargement
+`portal-config.js` active sa lecture (`enabled: true`). Les liens tickets
+sont ensuite activés (`ticketsEnabled: true`) sur demande explicite de
+l'utilisateur, en navigation seule (voir « Tickets natifs »). Ce fichier n'est pas présenté comme un téléchargement
 du flux ni comme une preuve des créations SharePoint ; leur résultat est
 rapporté séparément par la session de provisioning navigateur.
 Tests locaux uniquement : aucune recette réelle multi-comptes SharePoint
@@ -130,9 +132,26 @@ affiche son HTML d'origine. Pour revenir au contenu d'origine, désactiver
 URL confirmée :
 `https://europarl.sharepoint.com/sites/learn.IT-Kiwi/Lists/EuropaTickets/AllItems.aspx`.
 ID communiqué : `f673fe2d-9733-46dd-9afe-4bf614c99202`, inutilisé par le frontend.
-Le lien est configurable dans `ticketsUrl`, activable séparément par
-`ticketsEnabled` après recette des permissions.
 Aucun ticket, cookie ou jeton Microsoft n'est exporté dans content.json.
+
+Liens publics de navigation (`portal-config.js`, activés par `ticketsEnabled`) :
+
+| Clé | Bouton | Destination |
+| --- | --- | --- |
+| `ticketSubmitUrl` | carte support + « Submit a ticket » | formulaire d'intake SharePoint de l'organisation (`/:l:/s/learn.IT-Kiwi/<jeton>?nav=<id>`) |
+| `ticketsUrl` | « View my tickets » | `/sites/learn.IT-Kiwi/Lists/EuropaTickets/AllItems.aspx` |
+| `ticketAgentsUrl` | « Agent workspace » (agents autorisés seulement) | `/sites/learn.IT-Kiwi/Lists/TicketExchanges/AllItems.aspx` |
+
+`portal-ui.js` valide chaque URL par allowlist exacte (HTTPS, hôte
+`europarl.sharepoint.com`, site `learn.IT-Kiwi`, chemin exact, aucun
+query/hash sauf l'unique paramètre `nav` du formulaire). Une URL invalide
+masque tous les liens tickets et affiche une erreur. Le lien agents n'accorde
+aucun droit : l'accès réel dépend des permissions SharePoint de TicketExchanges.
+La sélection agents/membres est gérée dans le contexte SharePoint authentifié
+par une autre session ; aucun nom, e-mail, groupe ou appartenance ne doit être
+ajouté à `content.json`, `portal-config.js` ou au code public. L'ancienne
+redirection `ticket-popup.js` vers l'application démo `/sharepoint-ticketing/`
+a été retirée du portail.
 
 Colonnes : Title requis, Description multiligne brut requis, Created By système.
 Ne pas utiliser OwnerOid/OwnerTenantId app-only.
