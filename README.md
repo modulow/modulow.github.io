@@ -60,8 +60,10 @@ its reading is **enabled**. Ticket links are **enabled** as navigation only:
 the support card opens the Kiwi ticketing page
 (`https://ep.europa.kiwi/sharepoint-ticketing/`, maintained in the
 `modulow/sharepoint-ticketing` repository) in the same tab, and
-"Create an IT ticket" opens the organisation's SharePoint
-intake form. "Ticket queue (learn.IT agents)" opens the unfiltered
+"Create an IT ticket" opens that page on its "Create a ticket" view
+(`?action=create`); there, the user's click opens the organisation's SharePoint
+intake form in a small named popup so the ticketing page stays open behind it.
+"Ticket queue (learn.IT agents)" opens the unfiltered
 `EuropaTickets` list and "Ticket exchanges (learn.IT agents)" opens the
 `TicketExchanges` list (list-wide access is limited to learn.IT Members/Owners;
 other colleagues use the form and receive item-specific access by email;
@@ -78,9 +80,10 @@ their own tickets; modifications are reserved to support administrators,
 subject to verified SharePoint permissions. No ticket data goes through
 the export or this public page. Ticket links have their own activation flag
 (`ticketsEnabled`) and each URL is checked against an exact allowlist
-(host `europarl.sharepoint.com`, site `learn.IT-Kiwi`, list path or
-`/:l:/s/learn.IT-Kiwi/<token>?nav=<id>` form link; the ticketing page must be
-exactly `https://ep.europa.kiwi/sharepoint-ticketing/`); any invalid URL hides all
+(host `europarl.sharepoint.com`, site `learn.IT-Kiwi`, exact list path; the
+ticketing page must be
+exactly `https://ep.europa.kiwi/sharepoint-ticketing/`, to which the portal only
+appends `?action=create`); any invalid URL hides all
 ticket links and shows an error instead of navigating elsewhere.
 
 See [the provisioning guide](backend/README.md) for the exact list schema,

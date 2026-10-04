@@ -34,16 +34,6 @@ export function ticketAgentsLink(value) {
   return listLink(value, "TicketExchanges");
 }
 
-export function ticketSubmitLink(value) {
-  const url = sharePointUrl(value);
-  const keys = [...url.searchParams.keys()];
-  if (!new RegExp(`^/:l:/s/${TICKET_SITE.replace(".", "\\.")}/[A-Za-z0-9_-]{20,120}$`).test(url.pathname) ||
-      keys.length !== 1 || keys[0] !== "nav" || !/^[A-Za-z0-9_-]{8,200}={0,2}$/.test(url.searchParams.get("nav"))) {
-    throw new Error("Invalid SharePoint ticket form URL.");
-  }
-  return url.href;
-}
-
 export function ticketingPageLink(value) {
   const url = new URL(value);
   if (url.protocol !== "https:" || url.hostname !== "ep.europa.kiwi" || url.username || url.password ||
@@ -54,9 +44,10 @@ export function ticketingPageLink(value) {
 }
 
 function ticketLinks(config) {
+  const page = ticketingPageLink(config.ticketingPageUrl);
   return {
-    page: ticketingPageLink(config.ticketingPageUrl),
-    submit: ticketSubmitLink(config.ticketSubmitUrl),
+    page,
+    create: `${page}?action=create`,
     list: ticketsLink(config.ticketsUrl),
     agents: ticketAgentsLink(config.ticketAgentsUrl)
   };
@@ -106,13 +97,13 @@ export async function initializePortal(config, {
   if (config.ticketsEnabled) {
     try {
       const links = ticketLinks(config);
-      for (const [selector, href] of [["#ticket-link", links.submit], ["#ticket-list-link", links.list], ["#ticket-agents-link", links.agents]]) {
+      for (const [selector, href] of [["#ticket-link", links.create], ["#ticket-list-link", links.list], ["#ticket-agents-link", links.agents]]) {
         $(selector).href = href;
         $(selector).hidden = false;
       }
       nativeTickets = links.page;
       $(".card-support").href = nativeTickets;
-      message($("#ticket-status"), "Create an IT ticket in SharePoint. Microsoft 365 sign-in is required there.");
+      message($("#ticket-status"), "Create an IT ticket on the Kiwi ticketing page. The SharePoint form opens in a small sign-in window there.");
     } catch {
       for (const selector of ["#ticket-link", "#ticket-list-link", "#ticket-agents-link"]) {
         $(selector).removeAttribute("href");
