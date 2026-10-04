@@ -6,7 +6,7 @@
     <meta name="description" content="An L&amp;D applications portal — Discover the L&amp;D Learning Offer. Make a plan. Get IT support.">
     <meta name="theme-color" content="#0c4da2">
     <title>ep.europa.kiwi — An L&amp;D applications portal</title>
-    <link rel="stylesheet" href="styles.css?v=6e72a0c7dbff">
+    <link rel="stylesheet" href="styles.css?v=5f2a81084551">
     <link rel="icon" href="favicon.png" type="image/png" sizes="64x64">
   </head>
   <body>
@@ -91,7 +91,7 @@
             <span class="card-action">View the timetable <span class="arrow" aria-hidden="true">↗</span></span>
           </a>
 
-          <a class="card card-support" href="https://modulow.github.io/sharepoint-ticketing/">
+          <a class="card card-support" href="#tickets">
             <div class="card-top">
               <span class="icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -113,10 +113,13 @@
       <section id="tickets" class="tickets container" aria-labelledby="tickets-title" tabindex="-1">
         <p class="eyebrow">Get support</p>
         <h2 id="tickets-title">Your IT tickets</h2>
-        <p>Create a request in a secure SharePoint window. Kiwi stays open while Microsoft 365 signs you in and records your identity.</p>
-        <p id="ticket-status" class="integration-status" role="status">Choose an option below.</p>
-        <a id="ticket-link" class="primary-link" hidden>Create a ticket <span aria-hidden="true">↗</span></a>
-        <a id="ticket-list-link" href="https://europarl.sharepoint.com/sites/learn.IT-Kiwi/Lists/EuropaTickets/AllItems.aspx" target="kiwi-ticket-list" rel="noopener noreferrer">View my tickets <span aria-hidden="true">↗</span></a>
+        <p>Create an IT ticket with the SharePoint intake form. Microsoft 365 sign-in is required there; no tickets are stored or displayed on this public portal. Ticket updates are sent to you by email.</p>
+        <p id="ticket-status" class="integration-status" role="status">The SharePoint ticket links are not activated yet.</p>
+        <div class="ticket-actions">
+          <a id="ticket-link" class="primary-link" hidden>Create an IT ticket <span aria-hidden="true">↗</span></a>
+          <a id="ticket-list-link" class="secondary-link" hidden>Ticket queue (learn.IT agents) <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="ticket-agents"><a id="ticket-agents-link" hidden>Ticket exchanges (learn.IT agents) <span aria-hidden="true">↗</span></a> <span class="ticket-agents-note">The ticket queue and exchanges are for learn.IT agents only. SharePoint permissions apply.</span></p>
         <p class="access-note">Do not include passwords, access tokens or sensitive personal information in a ticket.</p>
       </section>
     </main>
@@ -136,7 +139,6 @@
       </div>
     </footer>
     <script src="hero.js?v=d285ec24599e" defer></script>
-    <script type="module" src="portal.js?v=9c719c8f706a"></script>
-    <script type="module" src="ticket-popup.js?v=20261003-6"></script>
+    <script type="module" src="portal.js?v=192aadd9e39d"></script>
   </body>
 </html>

@@ -6,7 +6,7 @@ An independent English-language portal at **https://ep.europa.kiwi/**.
 | --- | --- |
 | EP Learning Catalogue | https://modulow.github.io/ep-l-d-brochure/ |
 | Time Table Generator | https://ep.europa.kiwi/jma-timetable/ |
-| L&D IT Support | https://modulow.github.io/sharepoint-ticketing/ |
+| L&D IT Support | SharePoint ticket form and lists (see below) |
 
 ## Working on the portal
 
@@ -56,8 +56,14 @@ The optional integration targets
 `https://europarl.sharepoint.com/sites/learn.IT-Kiwi` through a SharePoint-only
 Power Automate export followed by manual publication of `content.json`.
 The initial public `content.json` is generated from the authorised seed and
-its reading is **enabled**. The native ticket destination remains disabled
-pending verification of its effective permissions.
+its reading is **enabled**. Ticket links are **enabled** as navigation only:
+the support card and "Create an IT ticket" open the organisation's SharePoint
+intake form. "Ticket queue (learn.IT agents)" opens the unfiltered
+`EuropaTickets` list and "Ticket exchanges (learn.IT agents)" opens the
+`TicketExchanges` list (list-wide access is limited to learn.IT Members/Owners;
+other colleagues use the form and receive item-specific access by email;
+SharePoint permissions decide access). The portal never fetches tickets,
+names, email addresses or group membership.
 `portal-config.js` contains public settings only. There is no Worker, HTTP
 flow, cloud secret, custom Entra app, Graph token or MSAL dependency.
 If an enabled export is missing or invalid, the original page stays visible
@@ -67,7 +73,11 @@ Published page/card content is public. Creating or reading tickets requires
 Microsoft 365 sign-in **inside SharePoint**. Authors submit and view only
 their own tickets; modifications are reserved to support administrators,
 subject to verified SharePoint permissions. No ticket data goes through
-the export or this public page. The ticket link has its own activation flag.
+the export or this public page. Ticket links have their own activation flag
+(`ticketsEnabled`) and each URL is checked against an exact allowlist
+(host `europarl.sharepoint.com`, site `learn.IT-Kiwi`, list path or
+`/:l:/s/learn.IT-Kiwi/<token>?nav=<id>` form link); any invalid URL hides all
+ticket links and shows an error instead of navigating elsewhere.
 
 See [the provisioning guide](backend/README.md) for the exact list schema,
 initial content, Power Automate contract, native ticket permissions,
