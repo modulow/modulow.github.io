@@ -116,7 +116,11 @@ test("ticket links activate independently without fetching any ticket or people 
     assert.equal(new URL(link.href).hostname, "europarl.sharepoint.com");
     assert.equal(link.hasAttribute("target"), false);
   }
-  assert.match(window.document.querySelector(".ticket-agents-note").textContent, /agents only/);
+  assert.match(window.document.querySelector(".ticket-agents-note").textContent, /learn\.IT agents only/);
+  assert.equal(window.document.querySelector("#ticket-link").textContent.trim().startsWith("Create an IT ticket"), true);
+  assert.match(window.document.querySelector("#ticket-list-link").textContent, /^Ticket queue \(learn\.IT agents\)/);
+  assert.match(window.document.querySelector("#ticket-agents-link").textContent, /^Ticket exchanges \(learn\.IT agents\)/);
+  assert.doesNotMatch(window.document.querySelector("#tickets").textContent, /my tickets|Agent workspace/i);
   window.close();
 });
 

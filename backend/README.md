@@ -138,15 +138,16 @@ Liens publics de navigation (`portal-config.js`, activés par `ticketsEnabled`) 
 
 | Clé | Bouton | Destination |
 | --- | --- | --- |
-| `ticketSubmitUrl` | carte support + « Submit a ticket » | formulaire d'intake SharePoint de l'organisation (`/:l:/s/learn.IT-Kiwi/<jeton>?nav=<id>`) |
-| `ticketsUrl` | « View my tickets » | `/sites/learn.IT-Kiwi/Lists/EuropaTickets/AllItems.aspx` |
-| `ticketAgentsUrl` | « Agent workspace » (agents autorisés seulement) | `/sites/learn.IT-Kiwi/Lists/TicketExchanges/AllItems.aspx` |
+| `ticketSubmitUrl` | carte support + « Create an IT ticket » | formulaire d'intake SharePoint de l'organisation (`/:l:/s/learn.IT-Kiwi/<jeton>?nav=<id>`) |
+| `ticketsUrl` | « Ticket queue (learn.IT agents) » — liste non filtrée, accès liste réservé aux Members/Owners learn.IT | `/sites/learn.IT-Kiwi/Lists/EuropaTickets/AllItems.aspx` |
+| `ticketAgentsUrl` | « Ticket exchanges (learn.IT agents) » | `/sites/learn.IT-Kiwi/Lists/TicketExchanges/AllItems.aspx` |
 
 `portal-ui.js` valide chaque URL par allowlist exacte (HTTPS, hôte
 `europarl.sharepoint.com`, site `learn.IT-Kiwi`, chemin exact, aucun
 query/hash sauf l'unique paramètre `nav` du formulaire). Une URL invalide
 masque tous les liens tickets et affiche une erreur. Le lien agents n'accorde
 aucun droit : l'accès réel dépend des permissions SharePoint de TicketExchanges.
+Il n'existe pas de vue « mes tickets » filtrée par permissions : les collègues externes à learn.IT passent par le formulaire et reçoivent un accès en lecture à leur seul item via le flux e-mail.
 La sélection agents/membres est gérée dans le contexte SharePoint authentifié
 par une autre session ; aucun nom, e-mail, groupe ou appartenance ne doit être
 ajouté à `content.json`, `portal-config.js` ou au code public. L'ancienne

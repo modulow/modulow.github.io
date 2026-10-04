@@ -102,7 +102,7 @@ export async function initializePortal(config, {
       }
       nativeTickets = links.submit;
       $(".card-support").href = nativeTickets;
-      message($("#ticket-status"), "Submit and view your tickets in SharePoint. Microsoft 365 sign-in is required there.");
+      message($("#ticket-status"), "Create an IT ticket in SharePoint. Microsoft 365 sign-in is required there.");
     } catch {
       for (const selector of ["#ticket-link", "#ticket-list-link", "#ticket-agents-link"]) {
         $(selector).removeAttribute("href");

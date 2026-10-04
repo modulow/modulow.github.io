@@ -57,9 +57,11 @@ The optional integration targets
 Power Automate export followed by manual publication of `content.json`.
 The initial public `content.json` is generated from the authorised seed and
 its reading is **enabled**. Ticket links are **enabled** as navigation only:
-the support card and "Submit a ticket" open the organisation's SharePoint
-intake form, "View my tickets" opens the `EuropaTickets` list and a separate
-agent link opens the `TicketExchanges` list (authorised support agents only;
+the support card and "Create an IT ticket" open the organisation's SharePoint
+intake form. "Ticket queue (learn.IT agents)" opens the unfiltered
+`EuropaTickets` list and "Ticket exchanges (learn.IT agents)" opens the
+`TicketExchanges` list (list-wide access is limited to learn.IT Members/Owners;
+other colleagues use the form and receive item-specific access by email;
 SharePoint permissions decide access). The portal never fetches tickets,
 names, email addresses or group membership.
 `portal-config.js` contains public settings only. There is no Worker, HTTP
