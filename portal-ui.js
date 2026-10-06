@@ -77,7 +77,7 @@ function renderContent(content, document, window, nativeTickets) {
   for (const key of ["brochure", "schedule", "support", "today"]) {
     const value = content[key];
     const card = $(`.card-${key}`);
-    card.href = key === "support" ? "https://ep.europa.kiwi/sharepoint-ticketing/" : value.href;
+    card.href = key === "support" ? "https://ep.europa.kiwi/sharepoint-ticketing/" : key === "today" ? "/EU.Learn.UpcomingCourses/" : value.href;
     for (const [selector, field] of [[".card-category", "category"], ["h3", "title"], [".card-description", "description"]]) {
       card.querySelector(selector).textContent = value[field];
     }
@@ -92,6 +92,12 @@ export async function initializePortal(config, {
   document = globalThis.document, window = globalThis.window, fetcher = globalThis.fetch
 } = {}) {
   const $ = selector => document.querySelector(selector);
+  const todayCard = $(".card-today");
+  todayCard.href = "/EU.Learn.UpcomingCourses/";
+  todayCard.addEventListener("click", event => {
+    event.preventDefault();
+    window.location.href = "/EU.Learn.UpcomingCourses/";
+  });
   let nativeTickets;
   if (config.ticketsEnabled) {
     try {
