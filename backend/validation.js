@@ -34,7 +34,7 @@ function lines(value, name) {
 
 export function contentView(envelope) {
   exactKeys(envelope, ["schemaVersion", "records"]);
-  if (envelope.schemaVersion !== 1 || !Array.isArray(envelope.records) || envelope.records.length !== 4) {
+  if (envelope.schemaVersion !== 1 || !Array.isArray(envelope.records) || envelope.records.length !== 5) {
     throw new HttpError(502, "Invalid publication envelope.");
   }
   const content = {};
@@ -42,7 +42,7 @@ export function contentView(envelope) {
     exactKeys(fields, ["Title", "Published", "Payload"]);
     if (fields.Published !== true) throw new HttpError(502, "Unpublished content is not allowed.");
     const key = fields.Title;
-    if (!["page", "brochure", "schedule", "support"].includes(key) || Object.hasOwn(content, key)) {
+    if (!["page", "brochure", "schedule", "support", "today"].includes(key) || Object.hasOwn(content, key)) {
       throw new HttpError(502, "Invalid published content keys.");
     }
     const value = fields.Payload;
@@ -75,6 +75,6 @@ export function contentView(envelope) {
       if (key === "support" && value.href !== "#tickets") throw new HttpError(502, "Support must link to portal tickets.");
     }
   }
-  if (Object.keys(content).length !== 4) throw new HttpError(502, "Publish page and all three cards before activation.");
+  if (Object.keys(content).length !== 5) throw new HttpError(502, "Publish page and all four cards before activation.");
   return content;
 }
