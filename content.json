@@ -60,7 +60,7 @@
         "title": "L&D IT Support",
         "description": "Technology getting in the way? Reach the helpdesk to create a ticket and follow your requests.",
         "action": "Open IT support",
-        "href": "#tickets"
+        "href": "https://ep.europa.kiwi/sharepoint-ticketing/"
       }
     },
     {
