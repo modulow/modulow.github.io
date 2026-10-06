@@ -74,7 +74,7 @@ function renderContent(content, document, window, nativeTickets) {
   accent.textContent = ".";
   footer.replaceChildren(document.createTextNode(page.footerLines[0]), document.createElement("br"),
     document.createTextNode(page.footerLines[1].replace(/\.$/, "")), accent);
-  for (const key of ["brochure", "schedule", "support"]) {
+  for (const key of ["brochure", "schedule", "support", "today"]) {
     const value = content[key];
     const card = $(`.card-${key}`);
     card.href = key === "support" ? nativeTickets || "#tickets" : value.href;
