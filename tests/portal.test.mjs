@@ -37,7 +37,7 @@ test("disabled configuration preserves original content/links without network or
 test("published repository file validates and public config contains only navigation links", async () => {
   const published = JSON.parse(await readFile(new URL("../content.json", import.meta.url), "utf8"));
   assert.doesNotThrow(() => contentView(published));
-  assert.deepEqual(published.records.map(record => record.Title).sort(), ["brochure", "page", "schedule", "support"]);
+  assert.deepEqual(published.records.map(record => record.Title).sort(), ["brochure", "page", "schedule", "support", "today"]);
   assert.equal(config.enabled, true);
   assert.equal(config.ticketsEnabled, true);
   assert.deepEqual(Object.keys(config).sort(), ["contentRevision", "enabled", "ticketAgentsUrl", "ticketSubmitUrl", "ticketsEnabled", "ticketsUrl"]);
