@@ -77,7 +77,7 @@ function renderContent(content, document, window, nativeTickets) {
   for (const key of ["brochure", "schedule", "support", "today"]) {
     const value = content[key];
     const card = $(`.card-${key}`);
-    card.href = key === "support" ? "https://ep.europa.kiwi/sharepoint-ticketing/" : key === "today" ? "/EU.Learn.UpcomingCourses/" : value.href;
+    card.href = key === "support" ? "https://ep.europa.kiwi/sharepoint-ticketing/" : key === "today" ? "https://ep.europa.kiwi/EU.Learn.UpcomingCourses/?v=portal-link" : value.href;
     for (const [selector, field] of [[".card-category", "category"], ["h3", "title"], [".card-description", "description"]]) {
       card.querySelector(selector).textContent = value[field];
     }
@@ -93,10 +93,10 @@ export async function initializePortal(config, {
 } = {}) {
   const $ = selector => document.querySelector(selector);
   const todayCard = $(".card-today");
-  todayCard.href = "/EU.Learn.UpcomingCourses/";
+  todayCard.href = "https://ep.europa.kiwi/EU.Learn.UpcomingCourses/?v=portal-link";
   todayCard.addEventListener("click", event => {
     event.preventDefault();
-    window.location.href = "/EU.Learn.UpcomingCourses/";
+    window.location.href = "https://ep.europa.kiwi/EU.Learn.UpcomingCourses/?v=portal-link";
   });
   let nativeTickets;
   if (config.ticketsEnabled) {
@@ -140,3 +140,9 @@ export async function initializePortal(config, {
     message($("#content-status"), "Published content is unavailable or invalid. The original portal content is shown instead.", true);
   }
 }
+
+
+
+
+
+
