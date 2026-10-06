@@ -77,7 +77,7 @@ function renderContent(content, document, window, nativeTickets) {
   for (const key of ["brochure", "schedule", "support", "today"]) {
     const value = content[key];
     const card = $(`.card-${key}`);
-    card.href = key === "support" ? nativeTickets || "#tickets" : value.href;
+    card.href = key === "support" ? "https://ep.europa.kiwi/sharepoint-ticketing/" : value.href;
     for (const [selector, field] of [[".card-category", "category"], ["h3", "title"], [".card-description", "description"]]) {
       card.querySelector(selector).textContent = value[field];
     }
@@ -101,14 +101,14 @@ export async function initializePortal(config, {
         $(selector).hidden = false;
       }
       nativeTickets = links.submit;
-      $(".card-support").href = nativeTickets;
+      $(".card-support").href = "https://ep.europa.kiwi/sharepoint-ticketing/";
       message($("#ticket-status"), "Create an IT ticket in SharePoint. Microsoft 365 sign-in is required there.");
     } catch {
       for (const selector of ["#ticket-link", "#ticket-list-link", "#ticket-agents-link"]) {
         $(selector).removeAttribute("href");
         $(selector).hidden = true;
       }
-      $(".card-support").href = "#tickets";
+      $(".card-support").href = "https://ep.europa.kiwi/sharepoint-ticketing/";
       message($("#ticket-status"), "SharePoint ticket configuration is invalid. Access is unavailable.", true);
     }
   }
