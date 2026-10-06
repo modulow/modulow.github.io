@@ -6,9 +6,9 @@ import { contentView } from "../backend/validation.js";
 const seed = JSON.parse(await readFile(new URL("../backend/content-seed.json", import.meta.url), "utf8"));
 const publication = () => ({ schemaVersion: 1, records: seed.map(record => ({ ...structuredClone(record), Published: true })) });
 
-test("seed produces only the four approved public records", () => {
+test("seed produces only the five approved public records", () => {
   const value = contentView(publication());
-  assert.deepEqual(Object.keys(value), ["page", "brochure", "schedule", "support"]);
+  assert.deepEqual(Object.keys(value), ["page", "brochure", "schedule", "support", "today"]);
   assert.equal(value.page.headline[0], "Fresh apps.");
   assert.equal(value.support.href, "#tickets");
 });
