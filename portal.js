@@ -1,4 +1,4 @@
-import config from "./portal-config.js?v=37f9f342d661";
-import { initializePortal } from "./portal-ui.js?v=dc708eb7e06e";
+import config from "./portal-config.js?v=eu-learn-today-1";
+import { initializePortal } from "./portal-ui.js?v=eu-learn-today-1";
 
 await initializePortal(config);
