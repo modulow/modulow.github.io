@@ -73,11 +73,12 @@ h1 { margin: 0; font-size: clamp(36px, 5.4vw, 78px); line-height: 1.04; letter-s
 .destinations { position: relative; z-index: 2; background: var(--white); padding-block: 56px 64px; scroll-margin-top: 96px; }
 .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
 h2 { margin: 0; font-size: clamp(24px, 2.8vw, 36px); line-height: 1.15; letter-spacing: -1px; text-transform: uppercase; }
-.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
 .card { display: flex; flex-direction: column; padding: 28px; border: 1px solid var(--grey); border-top: 7px solid var(--accent); text-decoration: none; min-width: 0; transition: transform 180ms ease; }
 .card-brochure { --accent: var(--yellow); --icon-ink: var(--ink); }
 .card-schedule { --accent: var(--sky); --icon-ink: var(--ink); }
 .card-support { --accent: var(--blue); --icon-ink: var(--white); }
+.card-today { --accent: var(--yellow); --icon-ink: var(--ink); }
 .card:hover { transform: translateY(-4px); border-inline-color: var(--blue); border-bottom-color: var(--blue); }
 .card.card-reveal { transition: transform 380ms ease-out, opacity 380ms ease-out; }
 .card.card-pending { opacity: 0; transform: translateY(80px); }
@@ -87,6 +88,7 @@ h2 { margin: 0; font-size: clamp(24px, 2.8vw, 36px); line-height: 1.15; letter-s
 .card-number { color: var(--blue); font-size: 36px; line-height: 1; font-weight: 700; font-variant-numeric: tabular-nums; }
 .card-brochure .card-number { color: var(--yellow); }
 .card-schedule .card-number { color: var(--sky); }
+.card-today .card-number { color: var(--yellow); }
 .card-category { margin: 0 0 10px; color: var(--blue); text-transform: uppercase; letter-spacing: 1.3px; font-size: 11px; font-weight: 700; }
 h3 { margin: 0; font-size: 28px; line-height: 1.2; letter-spacing: -.6px; font-weight: 700; }
 .card-description { margin: 18px 0 28px; font-size: 15px; line-height: 1.7; }
@@ -134,7 +136,7 @@ html[data-content-state="loading"] .footer-top { visibility: hidden; }
   .hero-inner { gap: 96px; }
   .hero-copy { width: calc(100vw - 64px); }
   .kiwi-feature { height: 340px; }
-  .cards { gap: 16px; }
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .card { padding: 22px; }
   h3 { font-size: 25px; }
 }
