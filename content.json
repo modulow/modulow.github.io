@@ -73,6 +73,17 @@
         "action": "View today’s courses",
         "href": "https://ep.europa.kiwi/EU.Learn.UpcomingCourses/"
       }
+    },
+    {
+      "Title": "flux-today",
+      "Published": true,
+      "Payload": {
+        "category": "Insights",
+        "title": "Flux Today",
+        "description": "Explore daily ALP training statistics and interactive breakdowns in one clear view.",
+        "action": "Open Flux Today",
+        "href": "https://ep.europa.kiwi/flux-today-fluent/"
+      }
     }
   ]
 }
